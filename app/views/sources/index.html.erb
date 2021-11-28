@@ -1,0 +1,34 @@
+<% if admin_signed_in? %>
+  管理者：<%= current_admin.name %>としてログインしました<br />
+  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+  <%= link_to '新規投稿', new_source_path %>
+  <div class="sources">
+    <% @sources.each do |source| %>
+      <div class="source-title">
+        <%= source.title %>
+      </div>
+      <div class="source-grade">
+        <%= source.content %>
+      </div>
+    <% end %>
+  </div>
+<% elsif user_signed_in? %>
+  <%= current_user.name %>としてログインしました<br />
+  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  <%= link_to '新規投稿', new_source_path %>
+  <div class="sources">
+    <% @sources.each do |source| %>
+      <div class="source-title">
+        <%= source.title %>
+      </div>
+      <div class="source-grade">
+        <%= source.grade.name %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <%= link_to 'ログイン(管理者)', new_admin_session_path %><br />
+  <%= link_to '新規登録(管理者)', new_admin_registration_path %><br />
+  <%= link_to 'ログイン(ユーザー)', new_user_session_path %><br />
+  <%= link_to '新規登録(管理者)', new_user_registration_path %><br />
+<% end %>

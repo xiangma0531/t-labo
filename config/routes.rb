@@ -5,8 +5,12 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   devise_for :admins, controllers: {
-    session: 'admins/sessions',
+    sessions: 'admins/sessions',
     passwords: 'admins/passwords',
     registrations: 'admins/registrations'
   }
+  resources :admins
+  resources :users
+  resources :sources
+  root 'sources#index'
 end

@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_admin!
-  before_action :authenticate_user!
   before_action :configure_permitted_parameters_admin, if: :devise_controller?
   before_action :configure_permitted_parameters_user, if: :devise_controller?
   before_action :configure_permitted_parameters_admin_edit, if: :devise_controller?

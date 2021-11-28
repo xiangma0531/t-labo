@@ -10,17 +10,17 @@
 
   <div class="field">
     <%= f.label :grade_id %>
-    <%= f.collectino_select :grade_id, Grade.all, :id, :name, {include_blank: "校種を選択してください"} %>
+    <%= f.collection_select :grade_id, Grade.all, :id, :name, {include_blank: "校種を選択してください"} %>
   </div>
 
   <div class="field">
     <%= f.label :subject_id %>
-    <%= f.collectino_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"} %>
+    <%= f.collection_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"} %>
   </div>
 
   <div class="field">
-    <%= f.label :cource_id %>
-    <%= f.collectino_select :course_id, Cource.all, :id, :name, {include_blank: "科目を選択してください"} %>
+    <%= f.label :course_id %>
+    <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"} %>
   </div>
 
   <div class="field">

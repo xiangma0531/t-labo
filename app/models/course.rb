@@ -1,4 +1,4 @@
-class Cource < ActiveHash::Base
+class Course < ActiveHash::Base
   self.data = [
     { id: 1, name: '現代文'}, { id: 2, name: '古文'},
     { id: 3, name: '数学ⅠA'}, { id: 4, name: '数学ⅡB'},

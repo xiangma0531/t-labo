@@ -1,10 +1,11 @@
+<%= render partial: "search_form", locals: { search: @p} %>
 <% if admin_signed_in? %>
   管理者：<%= current_admin.name %>としてログインしました<br />
   <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
   <%= link_to '新規投稿', new_source_path %>
   <div class="sources">
     <% @sources.each do |source| %>
-      <%= render partial: "source", locals: { source: source} %>
+      <%= render partial: "source", locals: { source: source } %>
     <% end %>
   </div>
 <% elsif user_signed_in? %>
@@ -13,7 +14,7 @@
   <%= link_to '新規投稿', new_source_path %>
   <div class="sources">
     <% @sources.each do |source| %>
-      <%= render partial: "source", locals: { source: source} %>
+      <%= render partial: "source", locals: { source: source } %>
     <% end %>
   </div>
 <% else %>

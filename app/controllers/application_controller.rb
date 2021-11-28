@@ -1,18 +1,18 @@
 class ApplicationController < ActionController::Base
-  before_action: :authenticate_admin!
-  before_action: :authenticate_user!
-  before_action: :configure_permitted_parameters_admin, if: :devise_controller?
-  before_action: :configure_permitted_parameters_user, if: :devise_controller?
-  before_action: :configure_permitted_parameters_admin_edit, if: :devise_controller?
-  before_action: :configure_permitted_parameters_user_edit, if: :devise_controller?
+  before_action :authenticate_admin!
+  before_action :authenticate_user!
+  before_action :configure_permitted_parameters_admin, if: :devise_controller?
+  before_action :configure_permitted_parameters_user, if: :devise_controller?
+  before_action :configure_permitted_parameters_admin_edit, if: :devise_controller?
+  before_action :configure_permitted_parameters_user_edit, if: :devise_controller?
 
   private
   def configure_permitted_parameters_admin
-    devise_parameter_sanitizer.permit(:sign_up, keys: :name)
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
   def configure_permitted_parameters_admin_edit
-    devise_parameter_sanitizer.permit(:account_update, keys: :name)
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
   
   def configure_permitted_parameters_user

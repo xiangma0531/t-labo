@@ -4,8 +4,33 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名(ニックネーム可)" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :grade_id %>
+    <%= f.collectino_select :grade_id, Grade.all, :id, :name, {include_blank: "校種を選択してください"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subject_id %>
+    <%= f.collectino_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cource_id %>
+    <%= f.collectino_select :course_id, Cource.all, :id, :name, {include_blank: "科目を選択してください"} %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :introduction %><br />
+    <%= f.text_area :introduction, rows: "5", placeholder: "自己紹介文を入力してください" %>
   </div>
 
   <div class="field">

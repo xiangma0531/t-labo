@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 2021_11_28_021358) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
-    t.integer "grade_id", null: false
-    t.integer "subject_id", null: false
-    t.integer "course_id", null: false
+    t.integer "grade_id"
+    t.integer "subject_id"
+    t.integer "course_id"
     t.text "introduction"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

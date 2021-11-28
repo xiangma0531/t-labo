@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   }
   resources :admins
   resources :users
-  resources :sources
+  resources :sources do
+    collection do
+      get 'search'
+    end
+  end
   root 'sources#index'
 end

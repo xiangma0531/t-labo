@@ -19,15 +19,23 @@ class SourcesController < ApplicationController
   end
 
   def show
-    
   end
 
   def edit
-    
   end
 
   def update
-    
+    if @source.update(source_params)
+      redirect_to source_path(@source.id)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    source = Source.find(params[:id])
+    source.destroy
+    redirect_to root_path
   end
 
   private

@@ -1,0 +1,33 @@
+<% if admin_signed_in? || user_signed_in? %>
+  <div class="edit-and-destroy-buttons">
+    <%= link_to '編集', edit_source_path(@source.id) %>
+    <%= link_to '削除', source_path(@source.id), method: :delete, date: {confirm: "投稿を削除します。\nよろしいですか？"} %>
+  </div>
+<% end %>
+<table class="source-table">
+  <tr>
+    <th class="single-row-table">タイトル</th>
+    <td class="single-row-table"><%= @source.title %></td>
+  </tr>
+
+  <tr>
+    <th class="single-row-table">校種</th>
+    <td class="single-row-table"><%= @source.grade.name %></td>
+  </tr>
+
+  <tr>
+    <th class="single-row-table">教科</th>
+    <td class="single-row-table"><%= @source.subject.name %></td>
+  </tr>
+
+  <tr>
+    <th class="single-row-table">科目</th>
+    <td class="single-row-table"><%= @source.course.name %></td>
+  </tr>
+
+  <tr>
+    <th class="single-row-table">概要</th>
+    <td class="single-row-table"><%= @source.content %></td>
+  </tr>
+</table>
+<%= link_to '戻る', root_path %>

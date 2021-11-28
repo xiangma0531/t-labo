@@ -1,4 +1,5 @@
 class SourcesController < ApplicationController
+  before_action :set_source, only: [:show, :edit, :update]
 
   def index
     @sources = Source.all
@@ -15,6 +16,18 @@ class SourcesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    
+  end
+
+  def edit
+    
+  end
+
+  def update
+    
   end
 
   private

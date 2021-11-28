@@ -4,12 +4,7 @@
   <%= link_to '新規投稿', new_source_path %>
   <div class="sources">
     <% @sources.each do |source| %>
-      <div class="source-title">
-        <%= source.title %>
-      </div>
-      <div class="source-grade">
-        <%= source.content %>
-      </div>
+      <%= render partial: "source", locals: { source: source} %>
     <% end %>
   </div>
 <% elsif user_signed_in? %>
@@ -18,12 +13,7 @@
   <%= link_to '新規投稿', new_source_path %>
   <div class="sources">
     <% @sources.each do |source| %>
-      <div class="source-title">
-        <%= source.title %>
-      </div>
-      <div class="source-grade">
-        <%= source.grade.name %>
-      </div>
+      <%= render partial: "source", locals: { source: source} %>
     <% end %>
   </div>
 <% else %>

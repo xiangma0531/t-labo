@@ -27,6 +27,11 @@
     <%= f.text_field :content, placeholder: '概要' %>
   </div>
 
+  <div class="form-parts">
+    <%= f.label '画像' %>
+    <%= f.file_field :image, class: 'hidden' %>
+  </div>
+
   <div class="source-submit">
     <%= f.submit "作成" %>
   </div>

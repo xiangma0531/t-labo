@@ -11,6 +11,10 @@ class Source < ApplicationRecord
     validates :grade_id
     validates :subject_id
     validates :course_id
-    validates :content
+    validates :content, unless: :was_attached?
+  end
+
+  def was_attached?
+    self.image.attached?
   end
 end

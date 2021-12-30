@@ -27,8 +27,17 @@
     <%= f.text_field :content, placeholder: '概要' %>
   </div>
 
+  <div class="form-parts">
+    <%= f.label '画像' %>
+    <%= f.file_field :image, class: 'hidden' %>
+  </div>
+
+  <div id="image-list">
+  </div>
+
   <div class="source-submit">
     <%= f.submit "作成" %>
   </div>
 <% end %>
+<%= image_tag @source.image, id: 'image' if @source.image.present? %>
 <%= link_to '戻る', root_path %>

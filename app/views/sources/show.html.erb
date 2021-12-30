@@ -30,4 +30,7 @@
     <td class="single-row-table"><%= @source.content %></td>
   </tr>
 </table>
+<div>
+  <%= image_tag @source.image.variant(resize: '200x200'), class: 'message-image' if @source.image.attached? %>
+</div>
 <%= link_to '戻る', root_path %>

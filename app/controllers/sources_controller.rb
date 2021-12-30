@@ -45,7 +45,7 @@ class SourcesController < ApplicationController
 
   private
   def source_params
-    params.require(:source).permit(:title, :grade_id, :subject_id, :course_id, :content, :image).merge(user_id: current_user.id)
+    params.require(:source).permit(:title, :grade_id, :subject_id, :course_id, :content, {images: []}).merge(user_id: current_user.id)
   end
 
   def set_source

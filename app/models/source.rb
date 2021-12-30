@@ -1,6 +1,6 @@
 class Source < ApplicationRecord
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :grade
   belongs_to :subject
@@ -15,6 +15,6 @@ class Source < ApplicationRecord
   end
 
   def was_attached?
-    self.image.attached?
+    self.images.attached?
   end
 end

@@ -29,7 +29,7 @@
 
   <div class="form-parts">
     <%= f.label '画像' %>
-    <%= f.file_field :image, class: 'hidden' %>
+    <%= f.file_field :images, name: 'source[images][]', data: {index: 0}, class: 'hidden' %>
   </div>
 
   <div id="image-list">
@@ -39,5 +39,5 @@
     <%= f.submit "作成" %>
   </div>
 <% end %>
-<%= image_tag @source.image, id: 'image' if @source.image.present? %>
+<%= image_tag @source.images, id: 'image' if @source.images.present? %>
 <%= link_to '戻る', root_path %>

@@ -1,5 +1,5 @@
 <h1>新規投稿</h1>
-<%= form_with(model: @source, local: true) do |f| %>
+<%= form_with(model: @source, id: "new_source", local: true) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
 
   <div class="form-parts">
@@ -27,17 +27,16 @@
     <%= f.text_field :content, placeholder: '概要' %>
   </div>
 
-  <div class="form-parts">
-    <%= f.label '画像' %>
-    <%= f.file_field :image, class: 'hidden' %>
-  </div>
-
-  <div id="image-list">
+  <div class="image-field">
+    <div id="previews"></div>
+    <div class="click-upload">
+      <%= f.file_field :images, name: 'post[images][]', data: {index: 0} %>
+    </div>
   </div>
 
   <div class="source-submit">
     <%= f.submit "作成" %>
   </div>
 <% end %>
-<%= image_tag @source.image, id: 'image' if @source.image.present? %>
+<%= image_tag @source.images, id: 'image' if @source.images.present? %>
 <%= link_to '戻る', root_path %>

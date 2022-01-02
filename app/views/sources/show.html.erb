@@ -31,7 +31,7 @@
   </tr>
 </table>
 <div>
-  <%= image_tag @source.images[0].variant(resize: '200x200'), class: 'message-image' if @source.image.attached? %>
+  <%= image_tag @source.images[0].variant(resize: '200x200'), class: 'message-image' if @source.images.attached? %><br>
   <div class="other-images">
     <% @source.images[1..-1].each do |image| %>
       <div class="other-image">

@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
+    @source = Source.find(params[:source_id])
     if @comment.save
-      redirect_to source_path(params[:source_id])
+      CommentChannel.broadcast_to @source, {comment: @comment, user: @comment.user}
     end
   end
 

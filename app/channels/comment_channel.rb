@@ -1,6 +1,7 @@
 class CommentChannel < ApplicationCable::Channel
   def subscribed
-    # stream_from "some_channel"
+    @source = Source.find(params[:source_id])
+    stream_for @source
   end
 
   def unsubscribed

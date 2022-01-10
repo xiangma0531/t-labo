@@ -31,13 +31,36 @@
   </tr>
 </table>
 <div>
-  <%= image_tag @source.images[0].variant(resize: '200x200'), class: 'message-image' if @source.image.attached? %>
-  <div class="other-images">
-    <% @source.images[1..-1].each do |image| %>
-      <div class="other-image">
-        <%= image_tag image.variant(resize: '100x100') %>
+  <% if @source.images.present? %>
+    <%= image_tag @source.images[0].variant(resize: '200x200'), class: 'message-image' if @source.images.attached? %><br>
+    <div class="other-images">
+      <% @source.images[1..-1].each do |image| %>
+        <div class="other-image">
+          <%= image_tag image.variant(resize: '100x100') %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div id="comments">
+  <h4>コメント一覧</h4>
+    <% @source.comments.each do |comment| %>
+      <div class="comment">
+        <p class="user-info"><%= comment.user.name %>：</p>
+        <p><%= comment.text %></p>
       </div>
     <% end %>
-  </div>
+</div>
+
+<div class="comment-form">
+  <% if admin_signed_in? || user_signed_in? %>
+    <%= form_with model: [@source, @comment], id: "comment-form" do |f| %>
+      <%= f.text_area :text, class: "comment-text" %>
+      <%= f.submit "コメントする", class: "comment-submit" %>
+    <% end %>
+  <% else %>
+    ※※※ コメントを投稿するにはログイン・または新規登録してください。 ※※※
+  <% end %>
 </div>
 <%= link_to '戻る', root_path %>

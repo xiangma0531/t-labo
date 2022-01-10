@@ -1,5 +1,6 @@
 class Source < ApplicationRecord
   belongs_to :user
+  has_many :comments
   has_many_attached :images
   validates :images, length: {maximum: 10, message: "は10枚以下にしてください"}
   extend ActiveHash::Associations::ActiveRecordExtensions

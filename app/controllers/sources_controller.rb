@@ -20,6 +20,8 @@ class SourcesController < ApplicationController
   end
 
   def show
+    @comments = @source.comments.includes(:user)
+    @comment = Comment.new
   end
 
   def edit

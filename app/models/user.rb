@@ -9,4 +9,5 @@ class User < ApplicationRecord
   belongs_to :grade
   belongs_to :subject
   belongs_to :course
+  has_many :comments
 end

@@ -17,7 +17,7 @@ class User < ApplicationRecord
     id == object.user_id
   end
 
-  def like?(source)
+  def already_liked?(source)
     favorites.include?(source)
   end
 end

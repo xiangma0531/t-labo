@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resource :likes, only: [:create, :destoy]
+    resource :likes, only: [:create, :destroy]
   end
   root 'sources#index'
 end

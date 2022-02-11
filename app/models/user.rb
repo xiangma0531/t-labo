@@ -10,4 +10,14 @@ class User < ApplicationRecord
   belongs_to :subject
   belongs_to :course
   has_many :comments
+  has_many :likes, dependent: :destroy
+  has_many :favorites, through: :likes, source: :source
+
+  def own?(object)
+    id == object.user_id
+  end
+
+  def already_liked?(source)
+    favorites.include?(source)
+  end
 end

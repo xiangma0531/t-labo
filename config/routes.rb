@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     end
     resource :likes, only: [:create, :destroy]
   end
+  resources :relationships, only: [:create, :destroy]
   root 'sources#index'
 end

@@ -1,0 +1,4 @@
+<p><%= @user.name %></p>
+<p><%= render partial: 'relationships/follow_buttons', locals: {user: @user} %></p>
+<p>自己紹介</p>
+<%= @user.introduction %>

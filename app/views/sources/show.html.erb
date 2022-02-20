@@ -4,6 +4,7 @@
     <%= link_to '削除', source_path(@source.id), method: :delete, data: {confirm: "投稿を削除します。\nよろしいですか？"} %>
   </div>
 <% end %>
+<h3>投稿者：<%= link_to @source.user.name, user_path(@source.user.id) %></h3>
 <table class="source-table">
   <tr>
     <th class="single-row-table">タイトル</th>

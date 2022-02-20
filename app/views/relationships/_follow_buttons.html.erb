@@ -1,0 +1,13 @@
+<% if current_user != user %>
+  <div id="follow-button-<%= user.id %>">
+    <% if current_user.following?(user) %>
+      <%= link_to relationship_path(user.id), method: :destroy, remote: true do %>
+        <p>フォロー解除</p>
+      <% end %>
+    <% else %>
+      <%= link_to relationships_path(id: user.id), method: :post, remote: true do %>
+        <p>フォローする</p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

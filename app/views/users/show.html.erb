@@ -1,5 +1,5 @@
 <p><%= @user.name %></p>
-<% if user_signed_in? || current_user != @user %>
+<% if user_signed_in? && current_user == @user %>
   <%= link_to 'ユーザー情報編集', edit_user_registration_path %>
 <% else %>
   <p><%= render partial: 'relationships/follow_buttons', locals: {user: @user} %></p>

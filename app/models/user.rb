@@ -9,6 +9,7 @@ class User < ApplicationRecord
   belongs_to :grade
   belongs_to :subject
   belongs_to :course
+  has_many :sources
   has_many :comments
   has_many :likes, dependent: :destroy
   has_many :favorites, through: :likes, source: :source

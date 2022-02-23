@@ -6,3 +6,8 @@
 <% end %>
 <p>自己紹介</p>
 <%= @user.introduction %>
+
+<p>自分の投稿</p>
+<% @sources.each do |source| %>
+  <%= render partial: "sources/source", locals: { source: source } %>
+<% end %>

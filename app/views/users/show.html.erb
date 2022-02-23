@@ -6,3 +6,23 @@
 <% end %>
 <p>自己紹介</p>
 <%= @user.introduction %>
+
+<p>自分の投稿</p>
+<% @sources.each do |source| %>
+  <%= render partial: "sources/source", locals: { source: source } %>
+<% end %>
+
+<p>いいねした投稿</p>
+<% @favorites.each do |favorite| %>
+  <%= render partial: "sources/source", locals: { source: favorite } %>
+<% end %>
+
+<p>フォロー</p>
+<% @followings.each do |following| %>
+  <%= link_to following.name, user_path(following.id) %>
+<% end %>
+
+<p>フォロワー</p>
+<% @followers.each do |follower| %>
+  <%= link_to follower.name, user_path(follower.id) %>
+<% end %>

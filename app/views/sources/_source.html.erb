@@ -6,8 +6,10 @@
     <%= source.grade.name %>
   </div>
   <% if user_signed_in? %>
-    <div id="like-button-<%= source.id %>">
-      <%= render partial: "likes/like", locals: {source: source} %>
-    </div>
+    <% unless current_user.own?(source) %>
+      <div id="like-button-<%= source.id %>">
+        <%= render partial: "likes/like", locals: {source: source} %>
+      </div>
+    <% end %>
   <% end %>
 </div>

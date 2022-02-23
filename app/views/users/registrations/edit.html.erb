@@ -1,7 +1,32 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>ユーザー情報編集 <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名(ニックネーム可)" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :grade_id %>
+    <%= f.collection_select :grade_id, Grade.all, :id, :name, {include_blank: "校種を選択してください"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subject_id %>
+    <%= f.collection_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :course_id %>
+    <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :introduction %><br />
+    <%= f.text_area :introduction, rows: "5", placeholder: "自己紹介文を入力してください" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />

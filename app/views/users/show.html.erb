@@ -1,4 +1,8 @@
 <p><%= @user.name %></p>
-<p><%= render partial: 'relationships/follow_buttons', locals: {user: @user} %></p>
+<% if user_signed_in? || current_user != @user %>
+  <%= link_to 'ユーザー情報編集', edit_user_registration_path %>
+<% else %>
+  <p><%= render partial: 'relationships/follow_buttons', locals: {user: @user} %></p>
+<% end %>
 <p>自己紹介</p>
 <%= @user.introduction %>

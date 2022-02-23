@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @sources = @user.sources.order(updated_at: 'DESC')
+    @favorites = @user.favorites.order(created_at: 'DESC')
   end
   
   private

@@ -11,3 +11,8 @@
 <% @sources.each do |source| %>
   <%= render partial: "sources/source", locals: { source: source } %>
 <% end %>
+
+<p>いいねした投稿</p>
+<% @favorites.each do |favorite| %>
+  <%= render partial: "sources/source", locals: { source: favorite } %>
+<% end %>

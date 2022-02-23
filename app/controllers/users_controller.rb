@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   def show
     @sources = @user.sources.order(updated_at: 'DESC')
     @favorites = @user.favorites.order(created_at: 'DESC')
+    @followings = @user.followings.order(created_at: 'DESC')
+    @followers = @user.followers.order(created_at: 'DESC')
   end
   
   private

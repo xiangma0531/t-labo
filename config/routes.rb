@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   root 'sources#index'
+  resources :messages
+  resources :rooms
 end

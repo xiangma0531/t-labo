@@ -1,0 +1,20 @@
+<% @entries.where.not(user_id: current_user.id).each do |entry| %>
+  <h1><%= entry.user.name %>さんとのDM</h1>
+<% end %>
+
+<% if @messages.present? %>
+  <% @messages.each do |message| %>
+    <div>
+      <%= message.message %><small>by:<%= message.user.name %></small>
+    </div>
+  <% end %>
+<% else %>
+  <h3>メッセージはまだありません</h3>
+<% end %>
+
+<%= form_for @message do |f| %>
+  <%= f.text_field :message, placeholder: 'メッセージを入力してください', size: 70 %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <br>
+  <%= f.submit '送信' %>
+<% end %>

@@ -4,6 +4,9 @@ class CommentsController < ApplicationController
     @source = Source.find(params[:source_id])
     if @comment.save
       CommentChannel.broadcast_to @source, {comment: @comment, user: @comment.user}
+    else
+      @error_comment = @comment
+      render "sources/show"
     end
   end
 

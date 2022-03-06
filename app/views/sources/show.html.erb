@@ -1,10 +1,13 @@
 <% if admin_signed_in? || user_signed_in? %>
-  <div class="edit-and-destroy-buttons">
-    <%= link_to '編集', edit_source_path(@source.id) %>
-    <%= link_to '削除', source_path(@source.id), method: :delete, data: {confirm: "投稿を削除します。\nよろしいですか？"} %>
-  </div>
+  <% if current_user == @source.user %>
+    <div class="edit-and-destroy-buttons">
+      <%= link_to '編集', edit_source_path(@source.id) %>
+      <%= link_to '削除', source_path(@source.id), method: :delete, data: {confirm: "投稿を削除します。\nよろしいですか？"} %>
+    </div>
+  <% end %>
 <% end %>
 <h3>投稿者：<%= link_to @source.user.name, user_path(@source.user.id) %></h3>
+<%= l @source.created_at %>
 <table class="source-table">
   <tr>
     <th class="single-row-table">タイトル</th>
@@ -57,6 +60,7 @@
 <div class="comment-form">
   <% if admin_signed_in? || user_signed_in? %>
     <%= form_with model: [@source, @comment], id: "comment-form" do |f| %>
+        <%= render 'layouts/error_messages', model: @comment %>
       <%= f.text_area :text, class: "comment-text" %>
       <%= f.submit "コメントする", class: "comment-submit" %>
     <% end %>

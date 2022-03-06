@@ -1,0 +1,20 @@
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+  activerecord:
+    attributes:
+      user:
+        name: ユーザー名
+        grade_id: 校種
+        subject_id: 教科
+        course_id: 科目
+        introduction: 自己紹介
+      source:
+        title: タイトル
+        grade_id: 校種
+        subject_id: 教科
+        course_id: 科目
+        content: 概要
+      comment:
+        text: コメント

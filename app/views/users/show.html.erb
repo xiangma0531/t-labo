@@ -3,7 +3,18 @@
   <%= link_to 'ユーザー情報編集', edit_user_registration_path %>
 <% else %>
   <p><%= render partial: 'relationships/follow_buttons', locals: {user: @user} %></p>
+  <% if @isRoom %>
+    <p><%= link_to 'チャットへ', room_path(@roomId) %></p>
+  <% else %>
+    <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, value: @user.id %>
+      <% end %>
+      <%= f.submit 'チャットを始める' %>
+    <% end %>
+  <% end %>
 <% end %>
+
 <p>自己紹介</p>
 <%= @user.introduction %>
 
@@ -25,4 +36,9 @@
 <p>フォロワー</p>
 <% @followers.each do |follower| %>
   <%= link_to follower.name, user_path(follower.id) %>
+<% end %>
+
+<p>DM</p>
+<% @rooms.each do |room| %>
+  <%= link_to room.user.name, room_path(room.room_id) %>
 <% end %>

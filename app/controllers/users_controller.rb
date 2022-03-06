@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @favorites = @user.favorites.order(created_at: 'DESC')
     @followings = @user.followings.order(created_at: 'DESC')
     @followers = @user.followers.order(created_at: 'DESC')
+    @rooms = Entry.all.where.not(user_id: current_user.id)
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
     if @user.id == current_user.id

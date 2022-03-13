@@ -59,10 +59,12 @@
 
 <div class="comment-form">
   <% if admin_signed_in? || user_signed_in? %>
-    <%= form_with model: [@source, @comment], id: "comment-form" do |f| %>
+    <% unless current_user == @source.user %>
+      <%= form_with model: [@source, @comment], id: "comment-form", local: true do |f| %>
         <%= render 'layouts/error_messages', model: @comment %>
-      <%= f.text_area :text, class: "comment-text" %>
-      <%= f.submit "コメントする", class: "comment-submit" %>
+        <%= f.text_area :text, class: "comment-text" %>
+        <%= f.submit "コメントする", class: "comment-submit" %>
+      <% end %>
     <% end %>
   <% else %>
     ※※※ コメントを投稿するにはログイン・または新規登録してください。 ※※※

@@ -41,3 +41,14 @@
   color: gray;
   font-weight: bold;
 }
+
+/*
+DM
+*/
+.mine-message{
+  background-color: aqua;
+}
+
+.message{
+  background-color: #666;
+}

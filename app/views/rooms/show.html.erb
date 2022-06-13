@@ -4,9 +4,15 @@
 
 <% if @messages.present? %>
   <% @messages.each do |message| %>
-    <div>
+  <% if message.user_id == current_user.id %>
+    <div class="mine-message">
       <%= message.message %><small>by:<%= message.user.name %></small>
     </div>
+  <% else %>
+    <div class="message">
+      <%= message.message %><small>by:<%= message.user.name %></small>
+    </div>
+  <% end %>
   <% end %>
 <% else %>
   <h3>メッセージはまだありません</h3>

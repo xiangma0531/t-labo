@@ -1,0 +1,6 @@
+<h1>トークルーム一覧</h1>
+
+<% @rooms.each do |room| %>
+  <%= link_to room.user.name, room_path(room.room_id) %>
+<% end %>
+<br>

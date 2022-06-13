@@ -4,7 +4,6 @@
     <title>TLabo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,7 +12,20 @@
     <header>
       <%= link_to 'T-Labo', root_path %>
     </header>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <%= yield %>
+    <footer class="footer">
+      <ul class="footer-buttons">
+        <li class="footer-button">
+          <%= link_to 'ホーム', root_path %>
+        </li>
+        <li class="footer-button">
+          <%= link_to 'DM', rooms_path %>
+        </li>
+        <li class="footer-button">
+          <%= link_to 'マイページ', user_path(current_user.id) %>
+        </li>
+      </ul>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   </body>
 </html>

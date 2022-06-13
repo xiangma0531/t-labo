@@ -1,4 +1,27 @@
-/* 画像プレビュー・複数画像投稿 */
+/*
+フッター
+*/
+.footer{
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  border-color: bisque;
+}
+.footer-buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.footer-button{
+  max-width: 40px;
+  max-height: 80%;
+  margin: 0 15px;
+}
+
+
+/*
+画像プレビュー・複数画像投稿
+*/
 #previews{
   display: flex;
 }

@@ -37,6 +37,44 @@
   height: 80vh;
   width: 100vw;
   overflow: scroll;
+  background-color: #fafad2;
+}
+.grid{
+  margin: auto;
+  max-width: 50vw;
+}
+
+/*
+検索ボックス
+*/
+.search-box{
+  border: 1px solid #666;
+  padding: 5px;
+  margin-top: 5px;
+}
+.search-headline{
+  padding: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.form-parts.search-inp{
+  width: 100%;
+  margin: auto;
+}
+.form-parts.search-inp > .input-text,
+.form-parts.search-inp > .input-select{
+  width: 50%;
+  padding: 5px;
+}
+.search-submit{
+  margin-top: 5px;
+}
+.search-submit > .btn{
+  width: 15%;
+  background-color: greenyellow;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
 }
 
 /*

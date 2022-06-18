@@ -1,9 +1,11 @@
 <% if current_user.already_liked?(source) %>
-  <%= link_to source_likes_path(source_id: source.id, user_id: current_user.id), method: :delete, remote: true do %>
-    <p>★</p>
+  いいね 
+  <%= link_to source_likes_path(source_id: source.id, user_id: current_user.id), class: "like-button", method: :delete, remote: true do %>
+    ★
   <% end %>
 <% else %>
-  <%= link_to source_likes_path(source_id: source.id), method: :post, remote: true do %>
-    <p>☆</p>
+  いいね 
+  <%= link_to source_likes_path(source_id: source.id), class: "like-button", method: :post, remote: true do %>
+    ☆
   <% end %>
 <% end %>

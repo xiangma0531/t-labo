@@ -46,12 +46,6 @@ input,select{
 #user_remember_me{
   width: auto;
 }
-.login-flash-message{
-
-}
-.actions{
-
-}
 
 /*
 ヘッダー
@@ -127,6 +121,19 @@ input,select{
 .like-button{
   padding: 0;
   color: #ffd700;
+}
+
+/*
+新規投稿・編集
+*/
+.btn.img-btn{
+  width: auto;
+  padding: 1%;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 /*

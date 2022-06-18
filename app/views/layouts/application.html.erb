@@ -58,6 +58,9 @@
           <%= link_to 'DM', rooms_path %>
         </li>
         <li class="footer-button">
+          <%= link_to 'いいね', likes_path %>
+        </li>
+        <li class="footer-button">
           <% if user_signed_in? %>
             <%= link_to 'マイページ', user_path(current_user.id) %>
           <% else %>

@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   root 'sources#index'
   resources :messages
   resources :rooms
+  resources :likes, only: :index
 end

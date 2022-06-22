@@ -70,6 +70,26 @@ input,select{
 .header-list{
   font-style: small;
 }
+/*
+フッター
+*/
+.footer{
+  position: absolute;
+  width: 100vw;
+  height: 10vh;
+  background-color: #f5deb3;
+}
+.footer-buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.footer-button{
+  max-width: 40px;
+  max-height: 80%;
+  margin: 0 15px;
+  font-size: small;
+}
 
 /*
 メイン
@@ -137,24 +157,37 @@ input,select{
 }
 
 /*
-フッター
+詳細
 */
-.footer{
-  position: absolute;
-  width: 100vw;
-  height: 10vh;
+.grid.grid-col-2 {
+  border: 1px solid #666;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: white;
+}
+.edit-and-destroy-buttons{
+  text-align: right;
+}
+.edit-btn{
+  border: 1px solid #666;
+  padding: 1%;
   background-color: #f5deb3;
 }
-.footer-buttons{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+.delete-btn{
+  border: 1px solid #666;
+  padding: 1%;
+  background-color: #fff;
 }
-.footer-button{
-  max-width: 40px;
-  max-height: 80%;
-  margin: 0 15px;
-  font-size: small;
+.source-caption{
+  text-align: right;
+}
+.source-images{
+  margin-top: 1%;
+}
+.comment-form-box{
+  border: none;
 }
 
 

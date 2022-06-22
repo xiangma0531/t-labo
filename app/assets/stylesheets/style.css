@@ -1,4 +1,199 @@
-/* 画像プレビュー・複数画像投稿 */
+/*
+グローバル
+*/
+*{
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+}
+h1,h2,h3,h4,h5,h6{
+  padding: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+/* 入力系 */
+.form-box{
+  border: 1px solid #666;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: white;
+}
+.field{
+  width: 100%;
+  margin: 1% auto 0;
+}
+input,select{
+  width: 50%;
+  padding: 5px;
+}
+.actions{
+  margin-top: 5px;
+}
+.btn{
+  width: 15%;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/*
+ログイン
+*/
+#user_remember_me{
+  width: auto;
+}
+
+/*
+ヘッダー
+*/
+.header{
+  height: 10vh;
+  width: 100vw;
+  background-color: #f5deb3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-left{
+  margin-left: 10%;
+}
+.header-right{
+  margin-right: 10%;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+.header-list{
+  font-style: small;
+}
+/*
+フッター
+*/
+.footer{
+  position: absolute;
+  width: 100vw;
+  height: 10vh;
+  background-color: #f5deb3;
+}
+.footer-buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.footer-button{
+  max-width: 40px;
+  max-height: 80%;
+  margin: 0 15px;
+  font-size: small;
+}
+
+/*
+メイン
+*/
+.main{
+  height: 80vh;
+  width: 100vw;
+  overflow: scroll;
+  background-color: #fafad2;
+}
+.grid{
+  margin: auto;
+  max-width: 50vw;
+}
+
+/*
+検索ボックス
+*/
+.actions > .search-btn{
+  background-color: greenyellow;
+}
+
+/*
+記事(一覧)
+*/
+.source{
+  background-color: #fff;
+  border: 1px solid #666;
+  padding: 1%;
+  margin: 1% 0;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.source-bottom-el{
+  display: block;
+  margin-left: 5%;
+  max-height: 100%;
+  min-width: 15%;
+  font-size: small;
+}
+.source-bottom-box{
+  display: flex;
+}
+.source-title{
+  font-size: large;
+  font-weight: bold;
+}
+.like-button{
+  padding: 0;
+  color: #ffd700;
+}
+
+/*
+新規投稿・編集
+*/
+.btn.img-btn{
+  width: auto;
+  padding: 1%;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/*
+詳細
+*/
+.grid.grid-col-2 {
+  border: 1px solid #666;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: white;
+}
+.edit-and-destroy-buttons{
+  text-align: right;
+}
+.edit-btn{
+  border: 1px solid #666;
+  padding: 1%;
+  background-color: #f5deb3;
+}
+.delete-btn{
+  border: 1px solid #666;
+  padding: 1%;
+  background-color: #fff;
+}
+.source-caption{
+  text-align: right;
+}
+.source-images{
+  margin-top: 1%;
+}
+.comment-form-box{
+  border: none;
+}
+
+
+/*
+画像プレビュー・複数画像投稿
+*/
 #previews{
   display: flex;
 }

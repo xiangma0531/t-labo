@@ -1,34 +1,45 @@
-<h1>新規投稿</h1>
-<%= form_with(model: @source, local: true) do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
+<div class="form-box">
+  <h4>投稿編集</h4>
+  <%= form_with(model: @source, id: "source_form", local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
 
-  <div class="form-parts">
-    <%= f.label 'タイトル' %>
-    <%= f.text_field :title, placeholder: 'タイトル' %>
-  </div>
+    <div class="field">
+      <%= f.label 'タイトル' %><br />
+      <%= f.text_field :title, placeholder: 'タイトル' %>
+    </div>
 
-  <div class="form-parts">
-    <%= f.label '校種' %>
-    <%= f.collection_select :grade_id, Grade.all, :id, :name, {include_blank: "校種を選択してください"} %>
-  </div>
+    <div class="field">
+      <%= f.label '校種' %><br />
+      <%= f.collection_select :grade_id, Grade.all, :id, :name, {include_blank: "校種を選択してください"} %>
+    </div>
 
-  <div class="form-parts">
-    <%= f.label '教科' %>
-    <%= f.collection_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"} %>
-  </div>
+    <div class="field">
+      <%= f.label '教科' %><br />
+      <%= f.collection_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"} %>
+    </div>
 
-  <div class="form-parts">
-    <%= f.label '科目' %>
-    <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"} %>
-  </div>
+    <div class="field">
+      <%= f.label '科目' %><br />
+      <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"} %>
+    </div>
 
-  <div class="form-parts">
-    <%= f.label '概要' %>
-    <%= f.text_field :content, placeholder: '概要' %>
-  </div>
+    <div class="field">
+      <%= f.label '概要' %><br />
+      <%= f.text_area :content, cols: "50", rows: "5", placeholder: '概要' %>
+    </div>
 
-  <div class="source-submit">
-    <%= f.submit "更新" %>
-  </div>
-<% end %>
-<%= link_to '戻る', root_path %>
+    <div class="field image-field">
+      <%= f.label '画像' %><br />
+      <div id="previews"></div>
+      <div class="click-upload">
+        <%= f.file_field :images, name: 'source[images][]', data: {index: 0}, class: "btn img-btn" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "更 新", class: "btn" %>
+    </div>
+  <% end %>
+  <hr>
+  <%= link_to '戻る', root_path %>
+</div>

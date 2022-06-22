@@ -2,6 +2,10 @@ class LikesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_source, only: [:create, :destroy]
 
+  def index
+    @favorites = current_user.favorites.order(created_at: 'DESC')
+  end
+
   def create
     like = current_user.likes.find_or_create_by(source_id: params[:source_id], user_id: current_user.id)
   end

@@ -1,4 +1,9 @@
 class RoomsController < ApplicationController
+
+  def index
+    @rooms = Entry.includes(:user).where.not(user_id: current_user.id)
+  end
+
   def create
     @room = Room.create
     @entry1 = Entry.create(room_id: @room.id, user_id: current_user.id)

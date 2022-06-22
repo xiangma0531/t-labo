@@ -1,15 +1,16 @@
 <div class="source">
-  <div class="source-title">
-    <%= link_to source.title, source_path(source.id) %>
-  </div>
-  <div class="source-grade">
-    <%= source.grade.name %>
-  </div>
-  <% if user_signed_in? %>
-    <% unless current_user.own?(source) %>
-      <div id="like-button-<%= source.id %>">
-        <%= render partial: "likes/like", locals: {source: source} %>
-      </div>
+  <%= link_to source.title, source_path(source.id), class: "source-title" %>
+  <hr>
+  <div class="source-bottom-box source-bottom-left">
+    <span class="source-bottom-el"><%= source.grade.name %></span>
+    <span class="source-bottom-el"><%= source.user.name %></span>
+    <span class="source-bottom-el"><%= l source.updated_at %></span>
+    <% if user_signed_in? %>
+      <% unless current_user.own?(source) %>
+        <span class="source-bottom-el" id="like-button-<%= source.id %>">
+          <%= render partial: "likes/like", locals: {source: source} %>
+        </span>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

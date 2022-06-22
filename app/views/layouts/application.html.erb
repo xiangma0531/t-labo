@@ -1,19 +1,76 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TLabo</title>
+    <title>T-Labo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-      <%= link_to 'T-Labo', root_path %>
+    <header class="header">
+      <label class="header-left">
+        <%= link_to 'T-Labo', root_path %>
+      </label>
+      <ul class="header-right">
+        <% if admin_signed_in? %>
+          <li class="header-list">
+            管理者：<%= current_admin.name %>
+          </li>
+          <li class="header-list">
+            <%= link_to '新規投稿', new_source_path %>
+          </li>
+          <li class="header-list">
+            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+          </li>
+        <% elsif user_signed_in? %>
+          <li class="header-list">
+            <%= current_user.name %>
+          </li>
+          <li class="header-list">
+            <%= link_to '新規投稿', new_source_path %>
+          </li>
+          <li class="header-list">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li class="header-list">
+            <%= link_to 'ログイン', new_user_session_path %>
+          </li>
+          <li class="header-list">
+            <%= link_to '新規登録', new_user_registration_path %>
+          </li>
+        <% end %>
+      </ul>
     </header>
+
+    <div class="main">
+      <div class="grid">
+        <%= yield %>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <ul class="footer-buttons">
+        <li class="footer-button">
+          <%= link_to 'ホーム', root_path %>
+        </li>
+        <li class="footer-button">
+          <%= link_to 'DM', rooms_path %>
+        </li>
+        <li class="footer-button">
+          <%= link_to 'いいね', likes_path %>
+        </li>
+        <li class="footer-button">
+          <% if user_signed_in? %>
+            <%= link_to 'マイページ', user_path(current_user.id) %>
+          <% else %>
+            <%= link_to 'ログイン', new_user_session_path %>
+          <% end %>
+        </li>
+      </ul>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <%= yield %>
   </body>
 </html>

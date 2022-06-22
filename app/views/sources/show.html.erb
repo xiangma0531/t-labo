@@ -1,73 +1,64 @@
-<% if admin_signed_in? || user_signed_in? %>
-  <% if current_user == @source.user %>
-    <div class="edit-and-destroy-buttons">
-      <%= link_to '編集', edit_source_path(@source.id) %>
-      <%= link_to '削除', source_path(@source.id), method: :delete, data: {confirm: "投稿を削除します。\nよろしいですか？"} %>
-    </div>
-  <% end %>
-<% end %>
-<h3>投稿者：<%= link_to @source.user.name, user_path(@source.user.id) %></h3>
-<%= l @source.created_at %>
-<table class="source-table">
-  <tr>
-    <th class="single-row-table">タイトル</th>
-    <td class="single-row-table"><%= @source.title %></td>
-  </tr>
-
-  <tr>
-    <th class="single-row-table">校種</th>
-    <td class="single-row-table"><%= @source.grade.name %></td>
-  </tr>
-
-  <tr>
-    <th class="single-row-table">教科</th>
-    <td class="single-row-table"><%= @source.subject.name %></td>
-  </tr>
-
-  <tr>
-    <th class="single-row-table">科目</th>
-    <td class="single-row-table"><%= @source.course.name %></td>
-  </tr>
-
-  <tr>
-    <th class="single-row-table">概要</th>
-    <td class="single-row-table"><%= @source.content %></td>
-  </tr>
-</table>
-<div>
-  <% if @source.images.present? %>
-    <%= image_tag @source.images[0].variant(resize: '200x200'), class: 'message-image' if @source.images.attached? %><br>
-    <div class="other-images">
-      <% @source.images[1..-1].each do |image| %>
-        <div class="other-image">
-          <%= image_tag image.variant(resize: '100x100') %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
-<div id="comments">
-  <h4>コメント一覧</h4>
-    <% @source.comments.each do |comment| %>
-      <div class="comment">
-        <p class="user-info"><%= comment.user.name %>：</p>
-        <p><%= comment.text %></p>
+<div class="grid grid-col-2">
+  <% if admin_signed_in? || user_signed_in? %>
+    <% if current_user == @source.user %>
+      <div class="edit-and-destroy-buttons">
+        <%= link_to '編集', edit_source_path(@source.id), class: "btn edit-btn" %>
+        <%= link_to '削除', source_path(@source.id), method: :delete, class: "btn delete-btn", data: {confirm: "投稿を削除します。\nよろしいですか？"} %>
       </div>
     <% end %>
-</div>
+  <% end %>
+  <h2><%= @source.title %></h2>
+  <div class="source-caption">
+    <%= link_to @source.user.name, user_path(@source.user.id) %>
+    <%= l @source.created_at, class: "source-show-created" %><br />
+    <%= @source.grade.name %> <%= @source.subject.name %> <%= @source.course.name %>
+  </div>
 
-<div class="comment-form">
-  <% if admin_signed_in? || user_signed_in? %>
-    <% unless current_user == @source.user %>
-      <%= form_with model: [@source, @comment], id: "comment-form", local: true do |f| %>
-        <%= render 'layouts/error_messages', model: @comment %>
-        <%= f.text_area :text, class: "comment-text" %>
-        <%= f.submit "コメントする", class: "comment-submit" %>
+  <hr>
+    <%= @source.content %>
+  <div>
+
+    <% if @source.images.present? %>
+      <% @source.images[0..-1].each do |image| %>
+        <div class="source-images">
+          <%= image_tag image.variant(resize: '200x200') %>
+        </div>
       <% end %>
     <% end %>
-  <% else %>
-    ※※※ コメントを投稿するにはログイン・または新規登録してください。 ※※※
-  <% end %>
+  </div>
+
+  <hr>
+
+  <div id="comments">
+    <h4>コメント</h4>
+      <% @source.comments.each do |comment| %>
+        <div class="comment">
+          <%= comment.user.name %>：<%= comment.text %>
+        </div>
+      <% end %>
+  </div>
+
+  <div class="form-box comment-form-box">
+    <% if admin_signed_in? || user_signed_in? %>
+
+      <% unless current_user == @source.user %>
+
+        <%= form_with model: [@source, @comment], id: "comment-form", local: true do |f| %>
+          <%= render 'layouts/error_messages', model: @comment %>
+          <div class="field">
+            <%= f.text_area :text, cols: "50", rows: "5", class: "comment-text" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "コメントする", class: "btn" %>
+          </div>
+        <% end %>
+        
+      <% end %>
+
+    <% else %>
+      ※※※ コメントを投稿するにはログイン・または新規登録してください。 ※※※
+    <% end %>
+  </div>
+  <%= link_to '戻る', root_path %>
 </div>
-<%= link_to '戻る', root_path %>

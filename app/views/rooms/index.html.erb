@@ -1,6 +1,9 @@
-<h1>トークルーム一覧</h1>
+<h4>トークルーム一覧</h4>
 
-<% @rooms.each do |room| %>
-  <%= link_to room.user.name, room_path(room.room_id) %>
-<% end %>
-<br>
+<div class="rooms">
+  <% @rooms.each do |room| %>
+    <div class="room">
+      <%= link_to room.user.name, room_path(room.room_id) %>
+    </div>
+  <% end %>
+</div>

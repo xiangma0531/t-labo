@@ -5,12 +5,12 @@
 <% if @messages.present? %>
   <% @messages.each do |message| %>
   <% if message.user_id == current_user.id %>
-    <div class="mine-message">
-      <%= message.message %><small>by:<%= message.user.name %></small>
+    <div class="message mine-message">
+      <%= message.message %>
     </div>
   <% else %>
-    <div class="message">
-      <%= message.message %><small>by:<%= message.user.name %></small>
+    <div class="message others-message">
+      <%= message.message %>
     </div>
   <% end %>
   <% end %>
@@ -18,9 +18,14 @@
   <h3>メッセージはまだありません</h3>
 <% end %>
 
+<hr>
+
 <%= form_for @message do |f| %>
-  <%= f.text_field :message, placeholder: 'メッセージを入力してください', size: 70 %>
+  <div class="field">
+    <%= f.text_area :message, placeholder: 'メッセージを入力してください', rows: '2', class: "room-field" %>
+  </div>
   <%= f.hidden_field :room_id, value: @room.id %>
-  <br>
-  <%= f.submit '送信' %>
+  <div class="actions">
+    <%= f.submit '送信', class: 'room-actions btn' %>
+  </div>
 <% end %>

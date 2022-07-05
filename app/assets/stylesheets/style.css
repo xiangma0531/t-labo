@@ -240,10 +240,40 @@ input,select{
 /*
 DM
 */
-.mine-message{
-  background-color: aqua;
+.room{
+  background-color: #fff;
+  border: 1px solid #666;
+  padding: 1%;
+  margin: 1% 0;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
 }
 
 .message{
-  background-color: #666;
+  padding: 1%;
+  margin: 1% 0;
+  height: auto;
+  width: 50%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.mine-message{
+  background-color: #f5deb3;
+  margin-left: auto;
+}
+
+.others-message{
+  background-color: lightgray;
+  margin-right: auto;
+}
+
+.field > .room-field{
+  width: 100%;
+}
+.actions > .room-actions{
+  width: fit-content;
+  background-color: #f5deb3;
 }

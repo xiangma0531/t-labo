@@ -38,6 +38,7 @@ input,select{
   cursor: pointer;
   border-radius: 5px;
   overflow: hidden;
+  background-color: #f5deb3;
 }
 
 /*
@@ -102,7 +103,7 @@ input,select{
 }
 .grid{
   margin: auto;
-  max-width: 50vw;
+  max-width: 80vw;
 }
 
 /*
@@ -154,6 +155,7 @@ input,select{
   cursor: pointer;
   border-radius: 5px;
   overflow: hidden;
+  background-color: white;
 }
 
 /*

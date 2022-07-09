@@ -254,6 +254,18 @@ DM
   position: relative;
 }
 
+.message-main{
+  border-radius: 10px;
+  overflow: hidden; 
+}
+
+.messages{
+  height: 55vh;
+  overflow: scroll;
+  background-color: white;
+  padding: 1%;
+}
+
 .message{
   padding: 1%;
   margin: 1% 0;

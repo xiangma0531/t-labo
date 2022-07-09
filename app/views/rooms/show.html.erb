@@ -2,21 +2,25 @@
   <h1><%= entry.user.name %>さんとのDM</h1>
 <% end %>
 
-<% if @messages.present? %>
-  <% @messages.each do |message| %>
-  <% if message.user_id == current_user.id %>
-    <div class="message mine-message">
-      <%= message.message %>
-    </div>
-  <% else %>
-    <div class="message others-message">
-      <%= message.message %>
-    </div>
-  <% end %>
-  <% end %>
-<% else %>
-  <h3>メッセージはまだありません</h3>
-<% end %>
+<div class="message-main">
+  <div class="messages">
+    <% if @messages.present? %>
+      <% @messages.each do |message| %>
+        <% if message.user_id == current_user.id %>
+          <div class="message mine-message">
+            <%= message.message %>
+          </div>
+        <% else %>
+          <div class="message others-message">
+            <%= message.message %>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <h3>メッセージはまだありません</h3>
+    <% end %>
+  </div>
+</div>
 
 <hr>
 

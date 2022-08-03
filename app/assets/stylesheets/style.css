@@ -264,30 +264,101 @@ DM
   overflow: scroll;
   background-color: white;
   padding: 1%;
+  width: 100%;
 }
 
-.message{
-  padding: 1%;
-  margin: 1% 0;
-  height: auto;
-  width: 50%;
-  border-radius: 10px;
-  overflow: hidden;
-}
 .mine-message{
-  background-color: #f5deb3;
-  margin-left: auto;
+  margin: 10px 0 10px auto;
+  max-width: 60%;
+}
+
+.mine-message p{
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  border-radius: 12px;
+  background-color: #f5deb3;;
+  font-size: 15px;
+}
+
+.mine-message p::after{
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #f5deb3;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
 }
 
 .others-message{
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.others-message.face-icon-dm{
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+
+.others-message.face-icon-dm img{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.message{
+  max-width: 40%;
+  text-align: left;
+}
+
+.says{
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  border-radius: 12px;
   background-color: lightgray;
-  margin-right: auto;
+}
+
+.says::after{
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid lightgray;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.says p{
+  margin: 0;
+  padding: 0;
+}
+
+.dm-field{
+  display: flex;
+  justify-content: space-around;
 }
 
 .field > .room-field{
-  width: 100%;
+  width: 95%;
 }
+
+.dm-field > .actions {
+  width: 10%;
+}
+
 .actions > .room-actions{
-  width: fit-content;
+  height: 90%;
+  width: 100%;
   background-color: #f5deb3;
+  padding: 2%;
 }

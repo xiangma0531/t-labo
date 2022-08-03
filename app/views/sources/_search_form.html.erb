@@ -17,7 +17,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :course_id_eq, '校種', class: "label" %><br />
+      <%= f.label :course_id_eq, '科目', class: "label" %><br />
       <%= f.collection_select :course_id_eq, Course.all, :id, :name, include_blank: "指定なし", class: "input-select" %>
     </div>
 

@@ -14,11 +14,11 @@ class ApplicationController < ActionController::Base
   end
   
   def configure_permitted_parameters_user
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :grade_id, :subject_id, :course_id, :introduction])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :image, :grade_id, :subject_id, :course_id, :introduction])
   end
 
   def configure_permitted_parameters_user_edit
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :grade_id, :subject_id, :course_id, :introduction])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :image, :grade_id, :subject_id, :course_id, :introduction])
   end
 
   def after_sign_in_path_for(resource)

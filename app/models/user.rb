@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :user
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_one_attached :image
 
   def own?(object)
     id == object.user_id

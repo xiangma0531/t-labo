@@ -1,3 +1,9 @@
+<div class="avator">
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image.variant(resize: '100x100') %>
+  <% end %>
+</div>
+
 <p><%= @user.name %></p>
 <% if user_signed_in? && current_user == @user %>
   <%= link_to 'ユーザー情報編集', edit_user_registration_path %>

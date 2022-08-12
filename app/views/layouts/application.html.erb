@@ -54,19 +54,30 @@
     <footer class="footer">
       <ul class="footer-buttons">
         <li class="footer-button">
-          <%= link_to 'ホーム', root_path %>
+          <%= link_to root_path do %>
+          <%= image_tag "home.png"%>
+          <p>ホーム</p>
+          <% end %>
         </li>
         <li class="footer-button">
-          <%= link_to 'DM', rooms_path %>
+          <%= image_tag "message.png"%>
+          <p>DM</p>
         </li>
         <li class="footer-button">
-          <%= link_to 'いいね', likes_path %>
+          <%= image_tag "star.png"%>
+          <p>いいね</p>
         </li>
-        <li class="footer-button">
+        <li class="footer-button footer-avator">
           <% if user_signed_in? %>
-            <%= link_to 'マイページ', user_path(current_user.id) %>
+            <%= link_to user_path(current_user.id) do %>
+              <%= image_tag current_user.image.variant(resize: '50x50') %>
+              <p>マイページ</p>
+            <% end %>
           <% else %>
-            <%= link_to 'ログイン', new_user_session_path %>
+            <%= link_to new_user_session_path do %>
+              <%= image_tag "default_avator.png" %>
+              <p>ログイン</p>
+            <% end %>
           <% end %>
         </li>
       </ul>

@@ -2,25 +2,47 @@
   <h1><%= entry.user.name %>さんとのDM</h1>
 <% end %>
 
-<% if @messages.present? %>
-  <% @messages.each do |message| %>
-  <% if message.user_id == current_user.id %>
-    <div class="mine-message">
-      <%= message.message %><small>by:<%= message.user.name %></small>
-    </div>
-  <% else %>
-    <div class="message">
-      <%= message.message %><small>by:<%= message.user.name %></small>
-    </div>
-  <% end %>
-  <% end %>
-<% else %>
-  <h3>メッセージはまだありません</h3>
-<% end %>
+<div class="message-main">
+  <div class="messages">
+    <% if @messages.present? %>
+      <% @messages.each do |message| %>
+        <% if message.user_id == current_user.id %>
+          <div class="mine-message">
+            <p>
+              <%= message.message %>
+            </p>
+          </div>
+        <% else %>
+          <div class="others-message">
+            <div class="face-icon-dm">
+              <%# アイコン %>
+            </div>
+            <div class="message">
+              <div class="says">
+                <p>
+                  <%= message.message %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <h3>メッセージはまだありません</h3>
+    <% end %>
+  </div>
+</div>
+
+<hr>
 
 <%= form_for @message do |f| %>
-  <%= f.text_field :message, placeholder: 'メッセージを入力してください', size: 70 %>
-  <%= f.hidden_field :room_id, value: @room.id %>
-  <br>
-  <%= f.submit '送信' %>
+  <div class="dm-field">
+    <div class="field">
+      <%= f.text_area :message, placeholder: 'メッセージを入力してください', rows: '2', class: "room-field" %>
+    </div>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <div class="actions">
+      <%= f.submit '送 信', class: 'room-actions btn' %>
+    </div>
+  </div>
 <% end %>

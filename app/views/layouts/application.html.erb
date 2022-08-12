@@ -55,17 +55,21 @@
       <ul class="footer-buttons">
         <li class="footer-button">
           <%= link_to root_path do %>
-          <%= image_tag "home.png"%>
-          <p>ホーム</p>
+            <%= image_tag "home.png"%>
+            <p>ホーム</p>
           <% end %>
         </li>
         <li class="footer-button">
-          <%= image_tag "message.png"%>
-          <p>DM</p>
+          <%= link_to rooms_path do %>
+            <%= image_tag "message.png"%>
+            <p>DM</p>
+          <% end %>
         </li>
         <li class="footer-button">
-          <%= image_tag "star.png"%>
-          <p>いいね</p>
+          <%= link_to likes_path do %>
+            <%= image_tag "star.png"%>
+            <p>いいね</p>
+          <% end %>
         </li>
         <li class="footer-button footer-avator">
           <% if user_signed_in? %>

@@ -269,7 +269,7 @@ input,select{
 /*
 DM
 */
-.room{
+.room,.user{
   background-color: #fff;
   border: 1px solid #666;
   padding: 1%;
@@ -389,3 +389,44 @@ DM
   background-color: #f5deb3;
   padding: 2%;
 }
+
+/* 
+マイページ
+*/
+.tab{
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #ccc;
+  border-bottom: solid 1px #ccc;
+}
+
+.tab:first-child{
+  border-left: none;
+}
+
+/* tabがactiveのとき */
+.tab-active{
+  color: #fff;
+  background-color: #19b5d1;
+  transition: all 0.2s ease-in-out;
+}
+
+/* tabの中身、最初は非表示 */
+.tabbox{
+  display: none;
+  pad: 15px;
+}
+
+.box-show{
+  display: block;
+}
+
+.tab:hover{
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+.tab-list{}
+.list-unstyled{}
+.tabbox-contents{}

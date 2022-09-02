@@ -26,27 +26,34 @@
 <p>自己紹介</p>
 <%= @user.introduction %>
 
-<p>自分の投稿</p>
-<% @sources.each do |source| %>
-  <%= render partial: "sources/source", locals: { source: source } %>
-<% end %>
+<ul class="tab-list list-unstyled">
+  <li class="tab tab-active">
+    自分の投稿
+  </li>
+  <li class="tab">
+    いいねした投稿
+  </li>
+  <li class="tab">
+    フォロー
+  </li>
+  <li class="tab">
+    フォロワー
+  </li>
+</ul>
 
-<p>いいねした投稿</p>
-<% @favorites.each do |favorite| %>
-  <%= render partial: "sources/source", locals: { source: favorite } %>
-<% end %>
-
-<p>フォロー</p>
-<% @followings.each do |following| %>
-  <%= link_to following.name, user_path(following.id) %>
-<% end %>
-
-<p>フォロワー</p>
-<% @followers.each do |follower| %>
-  <%= link_to follower.name, user_path(follower.id) %>
-<% end %>
-
-<p>DM</p>
-<% @rooms.each do |room| %>
-  <%= link_to room.user.name, room_path(room.room_id) %>
-<% end %>
+<div class="tabbox-contents">
+  <div class="tabbox box-show">
+    <%# 自分の投稿 %>
+    <% @sources.each do |source| %>
+      <%= render partial: "sources/source", locals: { source: source } %>
+    <% end %>
+  </div>
+  <div class="tabbox">
+    <%# フォロー %>
+    <%= render partial: "list", locals: { lists: @followings } %>
+  </div>
+  <div class="tabbox">
+    <%# フォロワー %>
+    <%= render partial: "list", locals: { lists: @followers } %>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+// $(document).on('turbolinks:load', function() {
   $(function() {
     // .tabがクリックされた時を指定
     $('.tab').click(function(){
@@ -15,4 +15,4 @@ $(document).on('turbolinks:load', function() {
       $('.tabbox').eq(index).addClass('box-show');
     });
   });
-});
+// });

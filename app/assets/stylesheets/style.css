@@ -393,29 +393,45 @@ DM
 /* 
 マイページ
 */
-.tab{
-  width: 100%;
-  padding: 10px;
-  cursor: pointer;
-  border-left: solid 1px #ccc;
-  border-bottom: solid 1px #ccc;
+.mypage{
+  background-color: white;
+  margin: 1% 0;
+  padding: 5%;
+  border: 1px solid #666;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-.tab:first-child{
-  border-left: none;
+.mylists{
+  width: 100%;
+}
+
+.tab-list{
+  display: flex;
+  width: 100%;
+  padding: 0;
+}
+
+.tab{
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  color: #333;
+  cursor: pointer;
+  border: solid 1px #666;
 }
 
 /* tabがactiveのとき */
 .tab-active{
-  color: #fff;
-  background-color: #19b5d1;
+  color: #333;
+  background-color: #f5deb3;
   transition: all 0.2s ease-in-out;
 }
 
 /* tabの中身、最初は非表示 */
 .tabbox{
   display: none;
-  pad: 15px;
+  padding: 0 15px;
 }
 
 .box-show{
@@ -426,7 +442,3 @@ DM
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
   transform: translateY(-1px);
 }
-
-.tab-list{}
-.list-unstyled{}
-.tabbox-contents{}

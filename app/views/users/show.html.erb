@@ -7,24 +7,27 @@
     <% end %>
   </div>
 
-  <p><%= @user.name %></p>
-  <% if user_signed_in? && current_user == @user %>
-    <%= link_to 'ユーザー情報編集', edit_user_registration_path %>
-  <% else %>
-    <p><%= render partial: 'relationships/follow_buttons', locals: {user: @user} %></p>
-    <% if @isRoom %>
-      <p><%= link_to 'チャットへ', room_path(@roomId) %></p>
+  <h3><%= @user.name %></h3>
+  <div class="user-btns">
+    <% if user_signed_in? && current_user == @user %>
+      <%= link_to 'ユーザー情報編集', edit_user_registration_path, class: 'btn mypage-btn' %>
     <% else %>
-      <%= form_for @room do |f| %>
-        <%= fields_for @entry do |e| %>
-          <%= e.hidden_field :user_id, value: @user.id %>
+      <%= render partial: 'relationships/follow_buttons', locals: {user: @user} %>
+      <% if @isRoom %>
+        <%= link_to 'チャットへ', room_path(@roomId), class: 'btn mypage-btn' %>
+      <% else %>
+        <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, value: @user.id %>
+          <% end %>
+          <%= f.submit 'チャットを始める', class: 'btn' %>
         <% end %>
-        <%= f.submit 'チャットを始める' %>
       <% end %>
     <% end %>
-  <% end %>
+  </div>
 
-  <p>自己紹介</p>
+  <br>
+
   <%= @user.introduction %>
 
   <hr>

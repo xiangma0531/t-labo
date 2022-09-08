@@ -402,6 +402,26 @@ DM
   overflow: hidden;
 }
 
+.user-btns{
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mypage-btn, .follow{
+  width: max-content;
+  display: block;
+  padding: 5px;
+}
+
+.unfollow{
+  width: max-content;
+  height: 100%;
+  display: block;
+  padding: 5px;
+  background-color: lightgray;
+}
+
 .mylists{
   width: 100%;
 }

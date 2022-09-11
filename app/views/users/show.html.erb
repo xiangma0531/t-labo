@@ -1,52 +1,65 @@
-<div class="avator">
-  <% if @user.image.attached? %>
-    <%= image_tag @user.image.variant(resize: '100x100') %>
-  <% else %>
-    <%= image_tag "default_avator.png" %>
-  <% end %>
-</div>
-
-<p><%= @user.name %></p>
-<% if user_signed_in? && current_user == @user %>
-  <%= link_to 'ユーザー情報編集', edit_user_registration_path %>
-<% else %>
-  <p><%= render partial: 'relationships/follow_buttons', locals: {user: @user} %></p>
-  <% if @isRoom %>
-    <p><%= link_to 'チャットへ', room_path(@roomId) %></p>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, value: @user.id %>
-      <% end %>
-      <%= f.submit 'チャットを始める' %>
+<div class="mypage">
+  <div class="avator">
+    <% if @user.image.attached? %>
+      <%= image_tag @user.image.variant(resize: '100x100') %>
+    <% else %>
+      <%= image_tag "default_avator.png" %>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
 
-<p>自己紹介</p>
-<%= @user.introduction %>
+  <h3><%= @user.name %></h3>
+  <div class="user-btns">
+    <% if user_signed_in? && current_user == @user %>
+      <%= link_to 'ユーザー情報編集', edit_user_registration_path, class: 'btn mypage-btn' %>
+    <% else %>
+      <%= render partial: 'relationships/follow_buttons', locals: {user: @user} %>
+      <% if @isRoom %>
+        <%= link_to 'チャットへ', room_path(@roomId), class: 'btn mypage-btn' %>
+      <% else %>
+        <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, value: @user.id %>
+          <% end %>
+          <%= f.submit 'チャットを始める', class: 'btn' %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 
-<p>自分の投稿</p>
-<% @sources.each do |source| %>
-  <%= render partial: "sources/source", locals: { source: source } %>
-<% end %>
+  <br>
 
-<p>いいねした投稿</p>
-<% @favorites.each do |favorite| %>
-  <%= render partial: "sources/source", locals: { source: favorite } %>
-<% end %>
+  <%= @user.introduction %>
 
-<p>フォロー</p>
-<% @followings.each do |following| %>
-  <%= link_to following.name, user_path(following.id) %>
-<% end %>
+  <hr>
 
-<p>フォロワー</p>
-<% @followers.each do |follower| %>
-  <%= link_to follower.name, user_path(follower.id) %>
-<% end %>
+  <div class="mylists">
+    <ul class="tab-list list-unstyled">
+      <li class="tab tab-active">
+        自分の投稿
+      </li>
+      <li class="tab">
+        フォロー
+      </li>
+      <li class="tab">
+        フォロワー
+      </li>
+    </ul>
 
-<p>DM</p>
-<% @rooms.each do |room| %>
-  <%= link_to room.user.name, room_path(room.room_id) %>
-<% end %>
+    <div class="tabbox-contents">
+      <div class="tabbox box-show">
+        <%# 自分の投稿 %>
+        <% @sources.each do |source| %>
+          <%= render partial: "sources/source", locals: { source: source } %>
+        <% end %>
+      </div>
+      <div class="tabbox">
+        <%# フォロー %>
+        <%= render partial: "list", locals: { lists: @followings } %>
+      </div>
+      <div class="tabbox">
+        <%# フォロワー %>
+        <%= render partial: "list", locals: { lists: @followers } %>
+      </div>
+    </div>
+  </div>
+</div>

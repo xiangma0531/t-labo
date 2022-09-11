@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -55,20 +56,20 @@
       <ul class="footer-buttons">
         <li class="footer-button">
           <%= link_to root_path do %>
-            <%= image_tag "home.png"%>
-            <p>ホーム</p>
+            <%= image_tag "home.png"%><br>
+            ホーム
           <% end %>
         </li>
         <li class="footer-button">
           <%= link_to rooms_path do %>
-            <%= image_tag "message.png"%>
-            <p>DM</p>
+            <%= image_tag "message.png"%><br>
+            DM
           <% end %>
         </li>
         <li class="footer-button">
           <%= link_to likes_path do %>
-            <%= image_tag "star.png"%>
-            <p>いいね</p>
+            <%= image_tag "star.png"%><br>
+            いいね
           <% end %>
         </li>
         <li class="footer-button footer-avator">
@@ -79,17 +80,18 @@
               <% else %>
                 <%= image_tag "default_avator.png" %>
               <% end %>
-              <p>マイページ</p>
+              <br>
+              マイページ
             <% end %>
           <% else %>
             <%= link_to new_user_session_path do %>
               <%= image_tag "default_avator.png" %>
-              <p>ログイン</p>
+              <br>
+              ログイン
             <% end %>
           <% end %>
         </li>
       </ul>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   </body>
 </html>

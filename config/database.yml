@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: t_labo_production
-  username: t_labo
-  password: <%= ENV['T_LABO_DATABASE_PASSWORD'] %>
+  username: admin
+  password: <%= env['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock

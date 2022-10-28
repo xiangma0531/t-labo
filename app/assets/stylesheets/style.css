@@ -1,17 +1,5 @@
 @charset "utf-8";
 
-/* 
-レスポンシブ設定
-*/
-/* タブレット */
-@media (max-width: 1000px) {
-
-}
-
-/* スマホ */
-@media (max-width: 500px) {
-  
-}
 
 /* 
   Base
@@ -24,6 +12,9 @@ body{
 }
 label, input ,textarea, button, select{
   cursor: pointer;
+}
+ul {
+  padding-inline-start: 0;
 }
 button{
   border: 0;
@@ -59,11 +50,14 @@ input,select{
   width: 50%;
   padding: 5px;
 }
+textarea{
+  width: 100%;
+}
 .actions{
   margin-top: 5px;
 }
 .btn{
-  width: 15%;
+  width: fit-content;
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -117,7 +111,7 @@ input,select{
   justify-content: space-around;
 }
 .footer-button{
-  max-width: 100px;
+  width: 5em;
   max-height: 80%;
   margin: 0 15px;
   font-size: small;
@@ -474,4 +468,21 @@ DM
 .tab:hover{
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
   transform: translateY(-1px);
+}
+
+
+/* 
+レスポンシブ設定
+*/
+/* タブレット */
+@media (max-width: 1024px) {
+
+}
+
+/* スマホ */
+@media (max-width: 599px) {
+  input,select{
+    width: 80%;
+    padding: 5px;
+  }
 }

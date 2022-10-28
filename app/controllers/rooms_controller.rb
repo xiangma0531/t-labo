@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @rooms = Entry.includes(:user).where.not(user_id: current_user.id)

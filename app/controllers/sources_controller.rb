@@ -1,4 +1,5 @@
 class SourcesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_source, only: [:show, :edit, :update]
   before_action :search_source, only: [:index, :search]
 

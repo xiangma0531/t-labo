@@ -57,38 +57,39 @@
       <ul class="footer-buttons">
         <li class="footer-button">
           <%= link_to root_path do %>
-            <%= image_tag "home.png"%><br>
-            ホーム
+            <%= image_tag "home.png", class: "footer-icon"%><br>
+            <span class="footer-icon-dsc">ホーム</span>
           <% end %>
         </li>
         <li class="footer-button">
           <%= link_to rooms_path do %>
-            <%= image_tag "message.png"%><br>
-            DM
+            <%= image_tag "message.png", class: "footer-icon"%><br>
+            <span class="footer-icon-dsc">DM</span>
           <% end %>
         </li>
         <li class="footer-button">
           <%= link_to likes_path do %>
-            <%= image_tag "star.png"%><br>
-            いいね
+            <%= image_tag "star.png", class: "footer-icon"%><br>
+            <span class="footer-icon-dsc">いいね</span>
           <% end %>
         </li>
-        <li class="footer-button footer-avator">
+        <li class="footer-button">
           <% if user_signed_in? %>
             <%= link_to user_path(current_user.id) do %>
               <% if current_user.image.attached? %>
-                <%= image_tag current_user.image.variant(resize: '20x20') %>
+                <%= image_tag "default_avator.png", class: "footer-avator" %>
+                <%# <%= image_tag current_user.image.variant(resize: '20x20') %>
               <% else %>
-                <%= image_tag "default_avator.png" %>
+                <%= image_tag "default_avator.png", class: "footer-avator" %>
               <% end %>
               <br>
-              マイページ
+              <span class="footer-icon-dsc">マイページ</span>
             <% end %>
           <% else %>
             <%= link_to new_user_session_path do %>
-              <%= image_tag "default_avator.png" %>
+              <%= image_tag "login.png" %>
               <br>
-              ログイン
+              <span class="footer-icon-dsc">ログイン</span>
             <% end %>
           <% end %>
         </li>

@@ -12,7 +12,6 @@ class Source < ApplicationRecord
     validates :title
     validates :grade_id
     validates :subject_id
-    validates :course_id
     validates :content, unless: :was_attached?
   end
 

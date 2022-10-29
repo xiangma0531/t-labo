@@ -3,7 +3,10 @@
   <div class="source-caption">
     投稿者：<span style="font-weight: bold;"><%= link_to @source.user.name, user_path(@source.user.id) %></span><br />
     <%= l @source.created_at, class: "source-show-created" %><br />
-    <%= @source.grade.name %> <%= @source.subject.name %> <%= @source.course.name %>
+    <%= @source.grade.name %> <%= @source.subject.name %>
+    <% unless @source.course.nil? %>
+      <%= @source.course.name %>
+    <% end %>
   </div>
   <% if admin_signed_in? || user_signed_in? %>
     <% if current_user == @source.user %>

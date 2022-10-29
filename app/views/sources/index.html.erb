@@ -1,16 +1,17 @@
 <%= render partial: "search_form", locals: { search: @p} %>
-<% if admin_signed_in? %>
+<%# <% if admin_signed_in? 
   <div class="sources">
-    <% @sources.each do |source| %>
-      <%= render partial: "source", locals: { source: source } %>
-    <% end %>
+    <% @sources.each do |source| 
+      <%= render partial: "source", locals: { source: source } 
+    <% end 
   </div>
-<% elsif user_signed_in? %>
+<% elsif user_signed_in? 
   <div class="sources">
-    <% @sources.each do |source| %>
-      <%= render partial: "source", locals: { source: source } %>
-    <% end %>
+    <% @sources.each do |source| 
+      <%= render partial: "source", locals: { source: source } 
+    <% end 
   </div>
-<% else %>
-  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-<% end %>
+<% else 
+  <h2>サービス開発者より</h2>
+<% end  %>
+<h2>サービス開発者より</h2>

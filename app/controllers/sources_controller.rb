@@ -4,7 +4,7 @@ class SourcesController < ApplicationController
   before_action :search_source, only: [:index, :search]
 
   def index
-    @sources = Source.all
+    # @sources = Source.all
   end
 
   def new
@@ -43,7 +43,7 @@ class SourcesController < ApplicationController
   end
 
   def search
-    @results = @p.result
+    @results = @p.result.order(created_at: 'DESC')
   end
 
   private

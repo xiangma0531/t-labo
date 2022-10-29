@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("../preview")
 require("../tab")
+require("../delmodal.js")
 
 
 

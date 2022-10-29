@@ -349,7 +349,7 @@ DM
 .mine-message p{
   display: inline-block;
   position: relative;
-  margin: 0 10px 0 0;
+  margin: 0 10% 0 0;
   padding: 8px;
   border-radius: 12px;
   background-color: #f5deb3;;
@@ -360,7 +360,7 @@ DM
   content: "";
   position: absolute;
   top: 3px;
-  right: -19px;
+  right: -15px;
   border: 8px solid transparent;
   border-left: 18px solid #f5deb3;
   -webkit-transform: rotate(-35deg);
@@ -394,7 +394,7 @@ DM
   width: 100%;
   display: inline-block;
   position: relative;
-  margin: 0 0 0 50px;
+  margin: 0 0 0 10%;
   padding: 10px;
   border-radius: 12px;
   background-color: lightgray;
@@ -405,7 +405,7 @@ DM
   display: inline-block;
   position: absolute;
   top: 3px;
-  left: -19px;
+  left: -15px;
   border: 8px solid transparent;
   border-right: 18px solid lightgray;
   -webkit-transform: rotate(35deg);
@@ -427,14 +427,14 @@ DM
 }
 
 .dm-field > .actions {
-  width: 10%;
+  width: fit-content;
 }
 
 .actions > .room-actions{
   height: 90%;
   width: 100%;
   background-color: #f5deb3;
-  padding: 2%;
+  padding: 0.5em;
 }
 
 /* 

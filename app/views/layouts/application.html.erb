@@ -28,11 +28,15 @@
           </li>
         <% elsif user_signed_in? %>
           <li class="header-list">
-            <%= link_to '新規投稿', new_source_path %>
+            <%= link_to new_source_path, class: "btn header-btn" do %>
+              新規投稿
+            <% end %>
           </li>
         <% else %>
           <li class="header-list">
-            <%= link_to '新規登録', new_user_registration_path %>
+            <%= link_to new_user_registration_path, class: "btn header-btn" do %>
+              新規登録
+            <% end %>
           </li>
         <% end %>
       </ul>

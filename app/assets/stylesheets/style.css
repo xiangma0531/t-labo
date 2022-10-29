@@ -97,13 +97,20 @@ textarea{
 }
 .header-right{
   margin-right: 10%;
-  width: 50%;
+  /* width: 50%; */
   display: flex;
   justify-content: space-around;
 }
-.header-list{
+/* .header-list{
   font-style: small;
+} */
+.header-btn{
+  border: 1px solid #666;
+  background-color: gold;
+  display: block;
+  padding: 5px;
 }
+
 /*
 フッター
 */

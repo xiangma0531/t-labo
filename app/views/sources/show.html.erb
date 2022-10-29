@@ -1,21 +1,27 @@
 <div class="grid grid-col-2">
+  <h2><%= @source.title %></h2>
+  <div class="source-caption">
+    投稿者：<span style="font-weight: bold;"><%= link_to @source.user.name, user_path(@source.user.id) %></span><br />
+    <%= l @source.created_at, class: "source-show-created" %><br />
+    <%= @source.grade.name %> <%= @source.subject.name %> <%= @source.course.name %>
+  </div>
   <% if admin_signed_in? || user_signed_in? %>
     <% if current_user == @source.user %>
       <div class="edit-and-destroy-buttons">
         <%= link_to '編集', edit_source_path(@source.id), class: "btn edit-btn" %>
         <%= link_to '削除', source_path(@source.id), method: :delete, class: "btn delete-btn", data: {confirm: "投稿を削除します。\nよろしいですか？"} %>
       </div>
+    <% else %>
+      <% unless current_user.own?(@source) %>
+        <span class="source-bottom-el" id="like-button-<%= @source.id %>" style="text-align: right;">
+          <%= render partial: "likes/like", locals: {source: @source} %>
+        </span>
+      <% end %>
     <% end %>
   <% end %>
-  <h2><%= @source.title %></h2>
-  <div class="source-caption">
-    <%= link_to @source.user.name, user_path(@source.user.id) %>
-    <%= l @source.created_at, class: "source-show-created" %><br />
-    <%= @source.grade.name %> <%= @source.subject.name %> <%= @source.course.name %>
-  </div>
 
   <hr>
-    <%= @source.content %>
+    <%= simple_format(h(@source.content)) %>
   <div>
 
     <% if @source.images.present? %>

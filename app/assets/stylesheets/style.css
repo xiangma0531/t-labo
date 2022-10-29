@@ -19,6 +19,10 @@ ul {
 button{
   border: 0;
 }
+p{
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
 
 /*
 グローバル
@@ -106,14 +110,16 @@ textarea{
   background-color: #f5deb3;
 }
 .footer-buttons{
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 .footer-button{
-  width: 5em;
+  width: 7em;
   /* max-height: 80%; */
-  margin: auto 15px;
+  height: 80%;
+  margin: auto 0;
   font-size: small;
   text-align: center;
   cursor: pointer;
@@ -128,6 +134,28 @@ textarea{
 
 .footer-icon-caption {
   font-size: 13px;
+}
+
+/* 
+開発者より
+*/
+.engineer-message{
+  width: 100%;
+  margin: 15px auto 15px;
+  padding: 2%;
+  background-color: white;
+  border: 1px solid #666;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.indent{
+  margin-left: 1em;
+}
+
+.engineer-sign{
+  text-align: end;
+  font-size: larger;
 }
 
 /*
@@ -485,7 +513,16 @@ DM
 */
 /* タブレット */
 @media (max-width: 1024px) {
-
+  .footer-icon, .footer-avator{
+    height: 30px;
+    width: 30px;
+    /* border-radius: 50%;
+    overflow: hidden; */
+  }
+  
+  .footer-icon-caption {
+    font-size: 13px;
+  }
 }
 
 /* スマホ */
@@ -498,11 +535,15 @@ DM
   }
   
   .footer-icon-caption {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   input,select{
     width: 80%;
     padding: 5px;
+  }
+
+  .engineer-message{
+    padding: 5%;
   }
 }

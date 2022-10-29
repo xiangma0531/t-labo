@@ -13,7 +13,7 @@
   <body>
     <header class="header">
       <label class="header-left">
-        <%= link_to 'T-Labo', root_path %>
+        <%= link_to 'T-Labo', root_path, class: "logo" %>
       </label>
       <ul class="header-right">
         <% if admin_signed_in? %>
@@ -28,18 +28,9 @@
           </li>
         <% elsif user_signed_in? %>
           <li class="header-list">
-            <%= current_user.name %>
-          </li>
-          <li class="header-list">
             <%= link_to '新規投稿', new_source_path %>
           </li>
-          <li class="header-list">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-          </li>
         <% else %>
-          <li class="header-list">
-            <%= link_to 'ログイン', new_user_session_path %>
-          </li>
           <li class="header-list">
             <%= link_to '新規登録', new_user_registration_path %>
           </li>
@@ -87,7 +78,7 @@
             <% end %>
           <% else %>
             <%= link_to new_user_session_path do %>
-              <%= image_tag "login.png" %>
+              <%= image_tag "login.png", class: "footer-icon" %>
               <br>
               <span class="footer-icon-caption">ログイン</span>
             <% end %>

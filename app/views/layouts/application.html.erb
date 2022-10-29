@@ -58,19 +58,19 @@
         <li class="footer-button">
           <%= link_to root_path do %>
             <%= image_tag "home.png", class: "footer-icon"%><br>
-            <span class="footer-icon-dsc">ホーム</span>
+            <span class="footer-icon-caption">ホーム</span>
           <% end %>
         </li>
         <li class="footer-button">
           <%= link_to rooms_path do %>
             <%= image_tag "message.png", class: "footer-icon"%><br>
-            <span class="footer-icon-dsc">DM</span>
+            <span class="footer-icon-caption">DM</span>
           <% end %>
         </li>
         <li class="footer-button">
           <%= link_to likes_path do %>
             <%= image_tag "star.png", class: "footer-icon"%><br>
-            <span class="footer-icon-dsc">いいね</span>
+            <span class="footer-icon-caption">いいね</span>
           <% end %>
         </li>
         <li class="footer-button">
@@ -83,13 +83,13 @@
                 <%= image_tag "default_avator.png", class: "footer-avator" %>
               <% end %>
               <br>
-              <span class="footer-icon-dsc">マイページ</span>
+              <span class="footer-icon-caption">マイページ</span>
             <% end %>
           <% else %>
             <%= link_to new_user_session_path do %>
               <%= image_tag "login.png" %>
               <br>
-              <span class="footer-icon-dsc">ログイン</span>
+              <span class="footer-icon-caption">ログイン</span>
             <% end %>
           <% end %>
         </li>

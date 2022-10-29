@@ -126,7 +126,7 @@ textarea{
   overflow: hidden; */
 }
 
-.footer-icon-dsc {
+.footer-icon-caption {
   font-size: 13px;
 }
 
@@ -235,7 +235,7 @@ textarea{
 画像プレビュー・複数画像投稿
 */
 #previews{
-  display: flex;
+  /* display: flex; */
 }
 
 .preview{
@@ -492,7 +492,7 @@ DM
     overflow: hidden; */
   }
   
-  .footer-icon-dsc {
+  .footer-icon-caption {
     font-size: 13px;
   }
 

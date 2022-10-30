@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // input要素取得
   const fileField = document.querySelector('input[type="file"][name="source[image]"]');
+
   // input要素で値の変化が起きた際に呼び出される関数
   fileField.addEventListener('change', function(e) {
     // 古いプレビューが存在する場合は削除
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 削除ボタンを生成
     const deleteButton = document.createElement('div');
     deleteButton.setAttribute('class', 'image-delete-button');
+    deleteButton.setAttribute('id', 'image-delete-button');
     deleteButton.innerText = '削除';
 
     // 削除ボタンをクリックしたらプレビュー・file_field・削除ボタンを削除し、file_fieldを再生成する

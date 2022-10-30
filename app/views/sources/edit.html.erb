@@ -30,9 +30,20 @@
 
     <div class="field image-field">
       <%= f.label '画像' %><br />
-      <div id="previews"></div>
-      <div class="click-upload">
-        <%= f.file_field :images, name: 'source[images][]', data: {index: 0}, class: "btn img-btn" %>
+      <div id="previews">
+        <% if @source.image.attached? %>
+          <div class="preview">
+            <%= image_tag @source.image, class: "preview-image" %>
+            <div class="image-delete-button" id="image-delete-button">
+              削除
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="click-upload" id="click-upload">
+        <%= f.file_field :image, class: "btn img-btn" %>
+        <%# 以下、複数枚画像対応コード %>
+        <%# <%= f.file_field :images, name: 'source[images][]', data: {index: 0}, class: "btn img-btn" %>
       </div>
     </div>
 

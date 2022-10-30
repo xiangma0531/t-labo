@@ -16,46 +16,12 @@
         <%= link_to 'T-Labo', root_path, class: "logo" %>
       </label>
       <ul class="header-right">
-        <% if admin_signed_in? %>
-          <li class="header-list">
-            管理者：<%= current_admin.name %>
-          </li>
-          <li class="header-list">
-            <%= link_to '新規投稿', new_source_path %>
-          </li>
-          <li class="header-list">
-            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
-          </li>
-        <% elsif user_signed_in? %>
-          <li class="header-list">
-            <%= link_to new_source_path, class: "btn header-btn" do %>
-              新規投稿
-            <% end %>
-          </li>
-        <% else %>
-          <li class="header-list">
-            <%= link_to new_user_registration_path, class: "btn header-btn" do %>
-              新規登録
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </header>
-
-    <div class="main">
-      <div class="grid">
-        <%= yield %>
-      </div>
-    </div>
-
-    <footer class="footer">
-      <ul class="footer-buttons">
-        <li class="footer-button">
-          <%= link_to root_path do %>
-            <%= image_tag "home.png", class: "footer-icon"%><br>
+        <%# <li class="footer-button">
+          <%= link_to root_path do 
+            <%= image_tag "home.png", class: "footer-icon"<br>
             <span class="footer-icon-caption">ホーム</span>
-          <% end %>
-        </li>
+          <% end 
+        </li> %>
         <li class="footer-button">
           <%= link_to rooms_path do %>
             <%= image_tag "message.png", class: "footer-icon"%><br>
@@ -89,7 +55,81 @@
           <% end %>
         </li>
       </ul>
-    </footer>
+      <%# <ul class="header-right">
+        <% if admin_signed_in? 
+          <li class="header-list">
+            管理者：<%= current_admin.name 
+          </li>
+          <li class="header-list">
+            <%= link_to '新規投稿', new_source_path 
+          </li>
+          <li class="header-list">
+            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete 
+          </li>
+        <% elsif user_signed_in? 
+          <li class="header-list">
+            <%= link_to new_source_path, class: "btn header-btn" do 
+              新規投稿
+            <% end 
+          </li>
+        <% else 
+          <li class="header-list">
+            <%= link_to new_user_registration_path, class: "btn header-btn" do 
+              新規登録
+            <% end 
+          </li>
+        <% end 
+      </ul> %>
+    </header>
+
+    <div class="main">
+      <div class="grid">
+        <%= yield %>
+      </div>
+    </div>
+
+    <%# <footer class="footer">
+      <ul class="footer-buttons">
+        <li class="footer-button">
+          <%= link_to root_path do 
+            <%= image_tag "home.png", class: "footer-icon"<br>
+            <span class="footer-icon-caption">ホーム</span>
+          <% end 
+        </li>
+        <li class="footer-button">
+          <%= link_to rooms_path do 
+            <%= image_tag "message.png", class: "footer-icon"<br>
+            <span class="footer-icon-caption">DM</span>
+          <% end 
+        </li>
+        <li class="footer-button">
+          <%= link_to likes_path do 
+            <%= image_tag "star.png", class: "footer-icon"<br>
+            <span class="footer-icon-caption">いいね</span>
+          <% end 
+        </li>
+        <li class="footer-button">
+          <% if user_signed_in? 
+            <%= link_to user_path(current_user.id) do 
+              <% if current_user.image.attached? 
+                <%= image_tag "default_avator.png", class: "footer-avator" 
+                <%# <%= image_tag current_user.image.variant(resize: '20x20') 
+              <% else 
+                <%= image_tag "default_avator.png", class: "footer-avator" 
+              <% end 
+              <br>
+              <span class="footer-icon-caption">マイページ</span>
+            <% end 
+          <% else 
+            <%= link_to new_user_session_path do 
+              <%= image_tag "login.png", class: "footer-icon" 
+              <br>
+              <span class="footer-icon-caption">ログイン</span>
+            <% end 
+          <% end 
+        </li>
+      </ul>
+    </footer> %>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </body>
 </html>

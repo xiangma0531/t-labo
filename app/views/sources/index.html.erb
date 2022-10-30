@@ -1,16 +1,30 @@
 <%= render partial: "search_form", locals: { search: @p} %>
-<% if admin_signed_in? %>
+<%# <% if admin_signed_in? 
   <div class="sources">
-    <% @sources.each do |source| %>
-      <%= render partial: "source", locals: { source: source } %>
-    <% end %>
+    <% @sources.each do |source| 
+      <%= render partial: "source", locals: { source: source } 
+    <% end 
   </div>
-<% elsif user_signed_in? %>
+<% elsif user_signed_in? 
   <div class="sources">
-    <% @sources.each do |source| %>
-      <%= render partial: "source", locals: { source: source } %>
-    <% end %>
+    <% @sources.each do |source| 
+      <%= render partial: "source", locals: { source: source } 
+    <% end 
   </div>
-<% else %>
-  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-<% end %>
+<% else 
+  <h2>サービス開発者より</h2>
+<% end  %>
+<div class="engineer-message">
+  <h2>サービス開発者より</h2>
+  <span class="indent">この度はT-Laboをご利用いただきまして誠にありがとうございます。</span><br>
+  <span class="indent">私はかつて公立高校の教員として働いておりました。</span><br>
+  <span class="indent">しかし、「学校のIT化に貢献し、先生にもっと楽に働いてほしい」と思うようになり、全くの未経験からシステムエンジニアへ転職しました。</span><br>
+  <span class="indent">教員時代から、「面白い授業をつくりたい」という思いを抱いておりましたが、参考になる授業を探したり、授業の上手い先生の話を聴く機会が非常に少ないことに悩んでおりました。</span><br>
+  <span class="indent">さらに、その頃から「GIGAスクール構想」の話題が出始め、タブレットなどを使用した授業づくりについても考えなければならないようになりました。</span><br>
+  <span class="indent">ただでさえ忙しい教職という仕事をこなしているのに、日々の授業づくりがより一層大変になってしまう…。</span><br>
+  <span class="indent">そう考えた時に、「授業内容をシェアできて、その授業について詳細に議論できる場をネット上に構築できればいいのではないか」との結論に至り、このサービスを思いつきました。</span><br>
+  <span class="indent">少しでも日々の授業づくりが効率よくなれば、そして授業の質の向上とよりよい学びの提供のお役に立てれば幸いです。</span><br>
+  <div class="engineer-sign">
+    T-Labo開発者より
+  </div>
+</div>

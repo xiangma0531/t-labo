@@ -25,10 +25,10 @@
       <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"} %>
     </div>
 
-    <div class="field">
-      <%= f.label :image %><em>アバター画像を設定できます</em><br />
-      <%= f.file_field :image %>
-    </div>
+    <%# <div class="field">
+      <%= f.label :image <em>アバター画像を設定できます</em><br />
+      <%= f.file_field :image 
+    </div> %>
     
     <div class="field">
       <%= f.label :introduction %><br />

@@ -1,9 +1,10 @@
 class SourcesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_source, only: [:show, :edit, :update]
   before_action :search_source, only: [:index, :search]
 
   def index
-    @sources = Source.all
+    # @sources = Source.all
   end
 
   def new
@@ -28,6 +29,9 @@ class SourcesController < ApplicationController
   end
 
   def update
+    if params[:source][:source_image_id]
+      @source.image.purge
+    end
     if @source.update(source_params)
       redirect_to source_path(@source.id)
     else
@@ -42,12 +46,14 @@ class SourcesController < ApplicationController
   end
 
   def search
-    @results = @p.result
+    @results = @p.result.order(created_at: 'DESC')
   end
 
   private
   def source_params
-    params.require(:source).permit(:title, :grade_id, :subject_id, :course_id, :content, {images: []}).merge(user_id: current_user.id)
+    params.require(:source).permit(:title, :grade_id, :subject_id, :course_id, :content, :image).merge(user_id: current_user.id)
+    # 以下、複数枚画像対応用
+    # params.require(:source).permit(:title, :grade_id, :subject_id, :course_id, :content, {images: []}).merge(user_id: current_user.id)
   end
 
   def set_source

@@ -1,16 +1,21 @@
 <div class="mypage">
-  <div class="avator">
-    <% if @user.image.attached? %>
-      <%= image_tag @user.image.variant(resize: '100x100') %>
-    <% else %>
-      <%= image_tag "default_avator.png" %>
-    <% end %>
-  </div>
+  <%# <div class="avator">
+    <% if @user.image.attached? 
+      <%= image_tag @user.image.variant(resize: '100x100') 
+    <% else 
+      <%= image_tag "default_avator.png" 
+    <% end 
+  </div> %>
 
   <h3><%= @user.name %></h3>
   <div class="user-btns">
     <% if user_signed_in? && current_user == @user %>
-      <%= link_to 'ユーザー情報編集', edit_user_registration_path, class: 'btn mypage-btn' %>
+      <%= link_to edit_user_registration_path, class: 'btn mypage-btn' do %>
+        ユーザー情報編集
+      <% end %>
+      <%= link_to destroy_user_session_path, class: 'btn logout', method: :delete do %>
+        ログアウト
+      <% end %>
     <% else %>
       <%= render partial: 'relationships/follow_buttons', locals: {user: @user} %>
       <% if @isRoom %>

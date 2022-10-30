@@ -27,8 +27,29 @@ document.addEventListener('DOMContentLoaded', function () {
     previewImage.setAttribute('class', 'preview-image');
     previewImage.setAttribute('src', blob);
 
+    // 削除ボタンを生成
+    const deleteButton = document.createElement('div');
+    deleteButton.setAttribute('class', 'image-delete-button');
+    deleteButton.innerText = '削除';
+
+    // 削除ボタンをクリックしたらプレビュー・file_field・削除ボタンを削除し、file_fieldを再生成する
+    deleteButton.addEventListener('click', () => {
+      const deleteImage = document.querySelector('.preview');
+      const deleteFileField = document.querySelector('input[type="file"][name="source[image]"]');
+      deleteImage.remove();
+      deleteFileField.remove();
+      deleteButton.remove();
+      const newFileField = document.createElement('input');
+      newFileField.setAttribute('type', 'file');
+      newFileField.setAttribute('name', 'source[image]');
+      newFileField.setAttribute('class', 'btn img-btn');
+      const insertArea = document.getElementById('click-upload');
+      insertArea.appendChild(newFileField);
+    });
+
     // 生成したHTMLの要素をブラウザに表示させる
     previewWrapper.appendChild(previewImage);
+    previewWrapper.appendChild(deleteButton);
     previewList.append(previewWrapper);
   });
 });

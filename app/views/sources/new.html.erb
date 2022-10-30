@@ -32,7 +32,9 @@
       <%= f.label '画像' %><br />
       <div id="previews"></div>
       <div class="click-upload">
-        <%= f.file_field :images, name: 'source[images][]', data: {index: 0}, class: "btn img-btn" %>
+        <%= f.file_field :image, class: "btn img-btn" %>
+        <%# 以下、複数枚画像対応コード %>
+        <%# <%= f.file_field :images, name: 'source[images][]', data: {index: 0}, class: "btn img-btn" %>
       </div>
     </div>
 

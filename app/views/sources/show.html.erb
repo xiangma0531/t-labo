@@ -27,13 +27,18 @@
     <%= simple_format(h(@source.content)) %>
   <div>
 
-    <% if @source.images.present? %>
-      <% @source.images[0..-1].each do |image| %>
-        <div class="source-images">
-          <%= image_tag image.variant(resize: '200x200') %>
-        </div>
-      <% end %>
+    <% if @source.image.attached? %>
+      <%= image_tag @source.image.variant(resize: '200x200') %>
     <% end %>
+
+    <%# 複数枚画像対応 %>
+    <%# <% if @source.images.present? 
+      <% @source.images[0..-1].each do |image| 
+        <div class="source-images">
+          <%= image_tag image.variant(resize: '200x200') 
+        </div>
+      <% end 
+    <% end  %>
   </div>
 
   <hr>

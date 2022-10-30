@@ -31,8 +31,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // 削除ボタンを生成
     const deleteButton = document.createElement('div');
     deleteButton.setAttribute('class', 'image-delete-button');
-    deleteButton.setAttribute('id', 'image-delete-button');
     deleteButton.innerText = '削除';
+
+
+    // 生成したHTMLの要素をブラウザに表示させる
+    previewWrapper.appendChild(previewImage);
+    previewWrapper.appendChild(deleteButton);
+    previewList.append(previewWrapper);
 
     // 削除ボタンをクリックしたらプレビュー・file_field・削除ボタンを削除し、file_fieldを再生成する
     deleteButton.addEventListener('click', () => {
@@ -45,13 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
       newFileField.setAttribute('type', 'file');
       newFileField.setAttribute('name', 'source[image]');
       newFileField.setAttribute('class', 'btn img-btn');
+      newFileField.setAttribute('id', 'source_image');
       const insertArea = document.getElementById('click-upload');
       insertArea.appendChild(newFileField);
     });
-
-    // 生成したHTMLの要素をブラウザに表示させる
-    previewWrapper.appendChild(previewImage);
-    previewWrapper.appendChild(deleteButton);
-    previewList.append(previewWrapper);
   });
 });

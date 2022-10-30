@@ -34,9 +34,7 @@
         <% if @source.image.attached? %>
           <div class="preview">
             <%= image_tag @source.image, class: "preview-image" %>
-            <div class="image-delete-button" id="image-delete-button">
-              削除
-            </div>
+            <p><%= f.check_box :source_image_id, {class: "form-check-input", id: "source-image-check"}, @source.image.id, false %>画像を削除する</p>
           </div>
         <% end %>
       </div>

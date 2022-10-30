@@ -29,6 +29,9 @@ class SourcesController < ApplicationController
   end
 
   def update
+    if params[:source][:source_image_id]
+      @source.image.purge
+    end
     if @source.update(source_params)
       redirect_to source_path(@source.id)
     else

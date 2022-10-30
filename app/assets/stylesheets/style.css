@@ -319,17 +319,19 @@ textarea{
 /*
 画像プレビュー・複数画像投稿
 */
-#previews{
+/* #previews{
   display: flex;
-}
+} */
 
 .preview{
+  height: 200px;
+  width: 200px;
   margin-right: 30px;
 }
 
 .preview-image{
-  height: 40px;
-  width: 40px;
+  height: 150px;
+  width: 150px;
 }
 
 .image-delete-button{
@@ -337,6 +339,11 @@ textarea{
   border: solid 1px;
   cursor: pointer;
   margin-bottom: 5px;
+}
+
+[type="checkbox"]{
+  width: auto;
+  display: inline-block;
 }
 
 /* コメント */

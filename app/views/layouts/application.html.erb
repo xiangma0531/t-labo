@@ -16,26 +16,32 @@
         <%= link_to 'T-Labo', root_path, class: "logo" %>
       </label>
       <ul class="header-right">
-        <%# <li class="footer-button">
-          <%= link_to root_path do 
-            <%= image_tag "home.png", class: "footer-icon"<br>
-            <span class="footer-icon-caption">ホーム</span>
-          <% end 
-        </li> %>
-        <li class="footer-button">
-          <%= link_to rooms_path do %>
-            <%= image_tag "message.png", class: "footer-icon"%><br>
-            <span class="footer-icon-caption">DM</span>
-          <% end %>
-        </li>
-        <li class="footer-button">
-          <%= link_to likes_path do %>
-            <%= image_tag "star.png", class: "footer-icon"%><br>
-            <span class="footer-icon-caption">いいね</span>
-          <% end %>
-        </li>
-        <li class="footer-button">
-          <% if user_signed_in? %>
+        <% if user_signed_in? %>
+          <%# <li class="footer-button">
+            <%= link_to root_path do 
+              <%= image_tag "home.png", class: "footer-icon"<br>
+              <span class="footer-icon-caption">ホーム</span>
+            <% end 
+          </li> %>
+          <li class="footer-button">
+            <%= link_to new_source_path do %>
+              <%= image_tag "post.png", class: "footer-icon"%><br>
+              <span class="footer-icon-caption">新規投稿</span>
+            <% end %>
+          </li>
+          <li class="footer-button">
+            <%= link_to rooms_path do %>
+              <%= image_tag "message.png", class: "footer-icon"%><br>
+              <span class="footer-icon-caption">DM</span>
+            <% end %>
+          </li>
+          <li class="footer-button">
+            <%= link_to likes_path do %>
+              <%= image_tag "star.png", class: "footer-icon"%><br>
+              <span class="footer-icon-caption">いいね</span>
+            <% end %>
+          </li>
+          <li class="footer-button">
             <%= link_to user_path(current_user.id) do %>
               <% if current_user.image.attached? %>
                 <%= image_tag "default_avator.png", class: "footer-avator" %>
@@ -46,14 +52,23 @@
               <br>
               <span class="footer-icon-caption">マイページ</span>
             <% end %>
-          <% else %>
+          </li>
+        <% else %>
+          <li class="footer-button">
             <%= link_to new_user_session_path do %>
               <%= image_tag "login.png", class: "footer-icon" %>
               <br>
               <span class="footer-icon-caption">ログイン</span>
             <% end %>
-          <% end %>
-        </li>
+          </li>
+          <li class="footer-button">
+            <%= link_to new_user_registration_path do %>
+              <%= image_tag "registration.png", class: "footer-icon" %>
+              <br>
+              <span class="footer-icon-caption">新規登録</span>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
       <%# <ul class="header-right">
         <% if admin_signed_in? 

@@ -299,11 +299,20 @@ textarea{
   background-color: #fff;
 }
 
-.closeModal {
-  position: absolute;
-  top: 0.5rem;
-  right: 1rem;
-  cursor: pointer;
+.modal-btns{
+  width: 100%;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-btn .btn{
+  width: auto;
+  padding: 5%;
+}
+
+.modal-del-btn{
+  display: block;
 }
 
 

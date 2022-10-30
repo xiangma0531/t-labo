@@ -12,7 +12,7 @@
     <% if current_user == @source.user %>
       <div class="edit-and-destroy-buttons">
         <%= link_to '編集', edit_source_path(@source.id), class: "btn edit-btn" %>
-        <button id="openModal" class="btn delete-btn">削除</button>
+        <span id="openModal" class="btn delete-btn">削除</span>
       </div>
     <% else %>
       <% unless current_user.own?(@source) %>
@@ -81,13 +81,15 @@
         この記事のコメント・いいねなども削除されます。<br />
         よろしいですか？
       </div>
-      <div>
-        <%= link_to source_path(@source.id), method: :delete, class: "btn delete-btn" do %>
-          削除する
-        <% end %>
-      </div>
-      <div id="closeModal" class="closeModal">
-        キャンセル
+      <div class="modal-btns">
+        <div>
+          <%= link_to source_path(@source.id), class: "btn modal-del-btn", method: :delete do %>
+            削除する
+          <% end %>
+        </div>
+        <div id="closeModal" class="btn modal-btn">
+          キャンセル
+        </div>
       </div>
     </div>
   </section>

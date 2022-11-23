@@ -9,7 +9,7 @@
         <% if message.user_id == current_user.id %>
           <div class="mine-message">
             <p>
-              <%= message.message %>
+              <%= safe_join(message.message.split("\n"),tag(:br)) %>
             </p>
           </div>
         <% else %>
@@ -20,7 +20,7 @@
             <div class="message">
               <div class="says">
                 <p>
-                  <%= message.message %>
+                  <%= safe_join(message.message.split("\n"),tag(:br)) %>
                 </p>
               </div>
             </div>

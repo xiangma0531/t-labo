@@ -272,6 +272,10 @@ textarea{
 /*
 モーダルCSS
 */
+#openModal{
+  cursor: pointer;
+}
+
 .modalArea {
   display: none;
   position: fixed;
@@ -311,7 +315,13 @@ textarea{
   padding: 5%;
 }
 
+.modal-btn{
+  background-color: white;
+  border: 1px solid #666;
+}
+
 .modal-del-btn{
+  border: 1px solid #666;
   display: block;
 }
 

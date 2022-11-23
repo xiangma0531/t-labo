@@ -24,7 +24,7 @@
   <% end %>
 
   <hr>
-    <%= simple_format(h(@source.content)) %>
+    <%= safe_join(@source.content.split("\n"),tag(:br)) %>
   <div>
 
     <% if @source.image.attached? %>

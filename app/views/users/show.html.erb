@@ -32,8 +32,9 @@
   </div>
 
   <br>
-
-  <%= @user.introduction %>
+  <% unless @user.introduction.nil? %>
+    <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
+  <% end %>
 
   <hr>
 

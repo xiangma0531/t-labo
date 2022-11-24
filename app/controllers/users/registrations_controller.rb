@@ -10,9 +10,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @user = User.new(params[:user].permit(:name, :image, :grade_id, :subject_id, :course_id, :introduction, :email, :password, :password_confirmation))
+    super
+    if @user.save
+      UserMailer.account_activation(@user).deliver_now
+    end
+  end
 
   # GET /resource/edit
   # def edit

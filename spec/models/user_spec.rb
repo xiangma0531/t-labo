@@ -9,11 +9,15 @@ RSpec.describe User, type: :model do
     # 正常系
     context '新規登録できる場合' do
       it 'name、email、password、password_confirmation、grade_id、subject_id、course_id、introductionがあれば登録できる' do
-        
+        expect(@user).to be_valid
       end
 
       it 'name、email、password、password_confirmationがあれば、grade_id、subject_id、course_id、introductionが未入力でも登録できる' do
-
+        @user.grade_id = nil
+        @user.subject_id = nil
+        @user.course_id = nil
+        @user.introduction = nil
+        expect(@user).to be_valid
       end
     end
 

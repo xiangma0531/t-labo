@@ -23,15 +23,13 @@ RSpec.describe Like, type: :model do
       it 'userが空の場合登録できない' do
         @like.user = nil
         @like.valid?
-        binding.pry
-        expect(@like.errors.full_messages).to include("")
+        expect(@like.errors.full_messages).to include("Userを入力してください")
       end
       
       it 'sourceが空の場合登録できない' do
         @like.source = nil
         @like.valid?
-        binding.pry
-        expect(@like.errors.full_messages).to include("")
+        expect(@like.errors.full_messages).to include("Sourceを入力してください")
       end
       
     end

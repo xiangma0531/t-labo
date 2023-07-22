@@ -2,6 +2,7 @@ class SourcesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_source, only: [:show, :edit, :update]
   before_action :search_source, only: [:index, :search]
+  before_action :move_to_index, except: [:index, :new, :create, :show, :search]
 
   def index
     # @sources = Source.all
@@ -62,5 +63,12 @@ class SourcesController < ApplicationController
 
   def search_source
     @p = Source.ransack(params[:q])
+  end
+
+  def move_to_index
+    @source = Source.find(params[:id])
+    unless current_user.id == @source.user_id
+      redirect_to root_path
+    end
   end
 end

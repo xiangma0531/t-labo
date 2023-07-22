@@ -6,8 +6,8 @@ RSpec.describe Room, type: :model do
     @room = FactoryBot.build(:room)
   end
 
-  # コメントの投稿に関するテストコード
-  describe 'コメントの投稿' do
+  # チャットルームの作成に関するテストコード
+  describe 'チャットルームの作成' do
     
     # 正常系
     context '新規登録できる場合' do

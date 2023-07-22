@@ -6,8 +6,8 @@ RSpec.describe Like, type: :model do
     @like = FactoryBot.build(:like)
   end
 
-  # コメントの投稿に関するテストコード
-  describe 'コメントの投稿' do
+  # お気に入りの登録に関するテストコード
+  describe 'お気に入りの登録' do
     
     # 正常系
     context '新規登録できる場合' do

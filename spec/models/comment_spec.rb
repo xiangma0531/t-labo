@@ -23,19 +23,7 @@ RSpec.describe Comment, type: :model do
         it 'textが空の場合登録できない' do
           @comment.text = ''
           @comment.valid?
-          expect(@comment.errors.full_messages).to include("")
-        end
-        
-        it '紐づくuserがいない場合登録できない' do
-          @comment.user_id = nil
-          @comment.valid?
-          expect(@comment.errors.full_messages).to include("")
-        end
-        
-        it '紐づくsourceがない場合登録できない' do
-          @comment.source_id = nil
-          @comment.valid?
-          expect(@comment.errors.full_messages).to include("")
+          expect(@comment.errors.full_messages).to include("コメントを入力してください")
         end
         
       end

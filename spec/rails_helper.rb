@@ -61,5 +61,9 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # 2023/07/30 結合テスト中Chromeドライバーのバージョンエラー発生のため、下記にてバージョン指定
+  Webdrivers::Chromedriver.required_version = '114.0.5735.90'
+
   config.include SignInSupport
 end

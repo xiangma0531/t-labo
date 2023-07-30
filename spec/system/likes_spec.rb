@@ -32,6 +32,14 @@ RSpec.describe "いいね", type: :system do
       expect(current_path).to eq(source_path(@source2))
       # 「いいね」後のボタンが表示されている
       expect(page).to have_content('★')
+      # 「★」をクリックすると、Likeモデルのカウントが1減る
+      expect{
+        click_on('★')
+        # Ajaxの処理完了を待つ
+        sleep 0.5
+      }.to change { Like.count }.by(-1)
+      # 「いいね」後のボタンが表示されている
+      expect(page).to have_content('☆')
     end
 
     it 'ログインしたユーザーは他のユーザーの記事にいいねできる(一覧から)' do
@@ -55,6 +63,14 @@ RSpec.describe "いいね", type: :system do
       }.to change { Like.count }.by(1)
       # 「いいね」後のボタンが表示されている
       expect(page).to have_content('★')
+      # 「★」をクリックすると、Likeモデルのカウントが1減る
+      expect{
+        click_on('★')
+        # Ajaxの処理完了を待つ
+        sleep 0.5
+      }.to change { Like.count }.by(-1)
+      # 「いいね」後のボタンが表示されている
+      expect(page).to have_content('☆')
     end
   end
 

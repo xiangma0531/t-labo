@@ -60,7 +60,7 @@ RSpec.describe "コメント投稿", type: :system do
       expect(page).to have_content('コメントを入力してください')
     end
 
-    it '自分が投稿したコメントは投稿できない' do
+    it '自分が投稿した記事にはコメントできない' do
       # source1を投稿したユーザーとしてログインする
       sign_in(@source1.user)
       # source1を検索する

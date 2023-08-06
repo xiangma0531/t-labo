@@ -10,6 +10,9 @@ require("channels")
 require("../preview")
 require("../tab")
 require("../delmodal.js")
+import "bootstrap";
+import "../stylesheets/application.scss";
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 
 

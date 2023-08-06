@@ -1,0 +1,210 @@
+require 'rails_helper'
+
+RSpec.describe "ユーザー新規登録", type: :system do
+  before do
+    @user = FactoryBot.build(:user)
+  end
+
+  context 'ユーザー新規登録ができるとき' do
+    it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
+      # トップページに移動する
+      visit root_path
+      # 新規登録ページへ遷移するボタンがあることを確認する
+      expect(page).to have_content('新規登録')
+      # 新規登録ページに移動する
+      visit new_user_registration_path
+      # ユーザー情報を入力する
+      fill_in 'ユーザー名', with: @user.name
+      select @user.grade.name, from: 'user_grade_id'
+      select @user.subject.name, from: 'user_subject_id'
+      select @user.course.name, from: 'user_course_id'
+      fill_in '自己紹介', with: @user.introduction
+      fill_in 'Eメール', with: @user.email
+      fill_in 'パスワード', with: @user.password
+      fill_in 'パスワード（確認用）', with: @user.password_confirmation
+      # 登録ボタンを押すとユーザーモデルのカウントが1上がる
+      expect{
+        find('input[name="commit"]').click
+      }.to change { User.count }.by(1)
+      # トップページへ遷移したことを確認する
+      expect(current_path).to eq(root_path)
+      # 新規登録ボタンやログインボタンが表示されていない
+      expect(page).to have_no_content('新規登録')
+      expect(page).to have_no_content('ログイン')
+      # 新規投稿・DM・いいね・マイページへのリンクが表示される
+      expect(page).to have_content('新規投稿')
+      expect(page).to have_content('DM')
+      expect(page).to have_content('いいね')
+      expect(page).to have_content('マイページ')
+    end
+  end
+
+  context 'ユーザー新規登録ができないとき' do
+    it '誤った情報ではユーザー新規登録ができずに新規登録ページへ戻ってくる' do
+      # トップページに移動する
+      visit root_path
+      # 新規登録ページに移動する
+      visit new_user_registration_path
+      # ユーザー情報を入力する
+      fill_in 'ユーザー名', with: ''
+      select '校種を選択してください', from: 'user_grade_id'
+      select '教科を選択してください', from: 'user_subject_id'
+      select '科目を選択してください', from: 'user_course_id'
+      fill_in '自己紹介', with: ''
+      fill_in 'Eメール', with: ''
+      fill_in 'パスワード', with: ''
+      fill_in 'パスワード（確認用）', with: ''
+      # 登録ボタンを押してもユーザーモデルのカウントは上がらない
+      expect{
+        find('input[name="commit"]').click
+      }.to change { User.count }.by(0)
+      # 新規登録ページへ戻される
+      expect(current_path).to eq user_registration_path
+    end
+  end
+
+end
+
+RSpec.describe "ユーザーログイン機能", type: :system do
+
+    it 'ログインに成功し、トップページに遷移する' do
+      # あらかじめユーザーをDBに保存する
+      @user = FactoryBot.create(:user)
+      # ログインページに移動する
+      visit new_user_session_path
+      # すでに保存されているユーザーのemailとpasswordを入力する
+      fill_in 'Eメール', with: @user.email
+      fill_in 'パスワード', with: @user.password
+      # ログインボタンをクリックする
+      find('input[name="commit"]').click
+      # トップページへ遷移したことを確認する
+      expect(current_path).to eq(root_path)
+      # 新規登録ボタンやログインボタンが表示されていない
+      expect(page).to have_no_content('新規登録')
+      expect(page).to have_no_content('ログイン')
+      # 新規投稿・DM・いいね・マイページへのリンクが表示される
+      expect(page).to have_content('新規投稿')
+      expect(page).to have_content('DM')
+      expect(page).to have_content('いいね')
+      expect(page).to have_content('マイページ')
+    end
+
+    it 'ログインに失敗し、ログインページに戻ってくる' do
+      # あらかじめユーザーをDBに保存する
+      @user = FactoryBot.create(:user)
+      # ログインページに移動する
+      visit new_user_session_path
+      # すでに保存されているユーザーとは異なるemailとpasswordを入力する
+      fill_in 'Eメール', with: 'test'
+      fill_in 'パスワード', with: 'test'
+      # ログインボタンをクリックする
+      find('input[name="commit"]').click
+      # ログインページに戻ってきていることを確認する
+      expect(current_path).to eq(new_user_session_path)
+    end
+
+end
+
+RSpec.describe "ユーザー情報編集機能", type: :system do
+
+  it 'ユーザー情報編集後入力した情報が反映されている' do
+    # あらかじめユーザーをDBに保存する
+    @user = FactoryBot.create(:user)
+    # ログインする
+    sign_in(@user)
+    # トップページへ遷移したことを確認する
+    expect(current_path).to eq(root_path)
+    # 新規登録ボタンやログインボタンが表示されていない
+    expect(page).to have_no_content('新規登録')
+    expect(page).to have_no_content('ログイン')
+    # 新規投稿・DM・いいね・マイページへのリンクが表示される
+    expect(page).to have_content('新規投稿')
+    expect(page).to have_content('DM')
+    expect(page).to have_content('いいね')
+    expect(page).to have_content('マイページ')
+    # マイページへ遷移する
+    visit user_path(@user)
+    # ユーザー情報編集画面へ遷移する
+    visit edit_user_registration_path
+    # 現在のユーザー名・メールアドレスが表示されている
+    expect(
+      find('#user_name').value
+    ).to eq(@user.name)
+    expect(
+      find('#user_email').value
+    ).to eq(@user.email)
+    # ユーザー名・メールアドレス・パスワードを編集し、現在のパスワードを入力する
+    fill_in 'ユーザー名', with: "#{@user.name}+編集"
+    fill_in 'Eメール', with: "edit+#{@user.email}"
+    fill_in 'パスワード', with: "edit#{@user.password}"
+    fill_in 'パスワード（確認用）', with: "edit#{@user.password_confirmation}"
+    fill_in '現在のパスワード', with: "#{@user.password}"
+    # 編集してもUserモデルのカウントは変わらないことを確認する
+    expect{
+      find('input[name="commit"]').click
+    }.to change { User.count }.by(0)
+    # ホーム画面に遷移し、変更されたユーザー名が表示されている
+    expect(current_path).to eq(root_path)
+    # ログアウト後にトップページに移動している
+    visit user_path(@user)
+    click_on('ログアウト')
+    expect(current_path).to eq(root_path)
+    # 再度ログインする際、変更前のメールアドレス・パスワードではログインできず、ログインページに戻される
+    sign_in(@user)
+    expect(current_path).to eq(new_user_session_path)
+    # 再度ログインする際、変更後のメールアドレス・パスワードではログインでき、ホーム画面に遷移する
+    fill_in 'Eメール', with: "edit+#{@user.email}"
+    fill_in 'パスワード', with: "edit#{@user.password}"
+    find('input[name="commit"]').click
+    expect(current_path).to eq(root_path)
+  end
+
+end
+
+RSpec.describe "ユーザー削除機能", type: :system do
+
+  it 'ユーザーを削除するとユーザーのレコードが1減り、ログイン画面に遷移する' do
+    # あらかじめユーザーをDBに保存する
+    @user = FactoryBot.create(:user)
+    # ログインする
+    sign_in(@user)
+    # トップページへ遷移したことを確認する
+    expect(current_path).to eq(root_path)
+    # 新規登録ボタンやログインボタンが表示されていない
+    expect(page).to have_no_content('新規登録')
+    expect(page).to have_no_content('ログイン')
+    # 新規投稿・DM・いいね・マイページへのリンクが表示される
+    expect(page).to have_content('新規投稿')
+    expect(page).to have_content('DM')
+    expect(page).to have_content('いいね')
+    expect(page).to have_content('マイページ')
+    # マイページへ遷移する
+    visit user_path(@user)
+    # ユーザー情報編集画面へ遷移する
+    visit edit_user_registration_path
+    # 現在のユーザー名・メールアドレスが表示されている
+    expect(
+      find('#user_name').value
+    ).to eq(@user.name)
+    expect(
+      find('#user_email').value
+    ).to eq(@user.email)
+    # 削除ボタンをクリックすると、「削除する」ボタンと「キャンセル」ボタンが表示されたモーダルが出現する
+    find('#openModal').click
+    expect(page).to have_content('削除する')
+    expect(page).to have_content('キャンセル')
+    # 「キャンセル」ボタンをクリックするとユーザーは削除されず、ユーザー情報編集画面に戻る
+    find('#closeModal').click
+    expect(current_path).to eq(edit_user_registration_path)
+    # 「削除」ボタンをクリックするとユーザーは削除されてUserモデルのカウントが1減り、ログイン画面に遷移する
+    find('#openModal').click
+    expect{
+      click_on('削除する')
+    }.to change { User.count }.by(-1)
+    expect(current_path).to eq(root_path)
+    # 再度ログインする際、削除されたユーザーのメールアドレス・パスワードではログインできず、ログインページに戻される
+    sign_in(@user)
+    expect(current_path).to eq(new_user_session_path)
+  end
+
+end

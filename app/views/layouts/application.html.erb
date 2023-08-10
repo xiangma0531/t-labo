@@ -60,6 +60,9 @@
                   <% end %>
                 </li>
               <% end %>
+              <li class="nav-item" data-bs-toggle="modal" data-bs-target="#searchModal" style="cursor: pointer">
+                <i class="bi bi-search"></i>記事を検索する
+              </li>
             </ul>
           </div>
         </div>
@@ -114,6 +117,22 @@
         </li>
       </ul>
     </footer> %>
+
+    <%# 記事検索モーダルウィンドウ %>
+      <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="searchModalLabel">記事を検索</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= render partial: "search_form", locals: { search: @p} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%# 記事検索モーダルウィンドウ %>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </body>
 </html>

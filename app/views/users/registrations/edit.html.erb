@@ -1,28 +1,28 @@
-<div class="form-box">
+<div class="form-box p-3">
   <h4>ユーザー情報編集 <%= resource_name.to_s.humanize %></h4>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "users/shared/error_messages", resource: resource %>
     <%= render 'layouts/error_messages', model: f.object %>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名(ニックネーム可)" %>
+      <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名(ニックネーム可)", class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :grade_id %><br />
-      <%= f.collection_select :grade_id, Grade.all, :id, :name, {include_blank: "校種を選択してください"} %>
+      <%= f.collection_select :grade_id, Grade.all, :id, :name, {include_blank: "校種を選択してください"}, class: 'form-select' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :subject_id %><br />
-      <%= f.collection_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"} %>
+      <%= f.collection_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"}, class: 'form-select' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :course_id %><br />
-      <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"} %>
+      <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"}, class: 'form-select' %>
     </div>
 
     <%# <div class="field">
@@ -30,70 +30,74 @@
       <%= f.file_field :image 
     </div> %>
     
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :introduction %><br />
-      <%= f.text_area :introduction, cols: "50", rows: "5", placeholder: "自己紹介文を入力してください" %>
+      <%= f.text_area :introduction, cols: "50", rows: "5", placeholder: "自己紹介文を入力してください", class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :password %> <i><span style="font-size: small;">(変更しない場合は空欄にしてください)</span></i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
       <% if @minimum_password_length %>
-        <br />
-        <em>※最低<%= @minimum_password_length %>文字</em>
+        <span style="font-size: small;">※最低<%= @minimum_password_length %>文字</span>
       <% end %>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :current_password %> <i><span style="font-size: small;">(変更を適用するには現在のパスワードを入力してください)</span></i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
+      <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "更 新", class: "btn" %>
+    <div class="actions mb-3">
+      <%= f.submit "更 新", class: "btn btn-warning" %>
     </div>
   <% end %>
 
   <hr>
   <h4>アカウント削除</h4>
-  <div id="openModal">
+  <button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#delModal">
+    <i class="bi bi-trash"></i>
     アカウントを削除する
-  </div>
+  </button>
 
-  <%= link_to "戻 る", :back, class: "btn" %>
+  <br />
+  <%= link_to "戻 る", :back %>
 
 </div>
 
 <%# 削除確認モーダルウィンドウ %>
-  <section id="modalArea" class="modalArea">
-    <div id="modalBg" class="modalBg"></div>
-    <div class="modalWrapper">
-      <div class="modalContents">
-        アカウントを削除します。<br />
-        よろしいですか？
-      </div>
-      <div class="modal-btns">
-        <%= link_to registration_path(resource_name), class: "btn modal-del-btn", method: :delete do %>
-          削除する
-        <% end %>
-        <div id="closeModal" class="btn modal-btn">
-          キャンセル
+  <div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="delModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="delModalLabel">削除</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          アカウントを削除します。<br>
+          よろしいですか？
+        </div>
+        <div class="modal-footer">
+          <%= link_to registration_path(resource_name), class: "btn btn-danger", method: :delete do %>
+            削除する
+          <% end %>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 <%# 削除確認モーダルウィンドウ %>

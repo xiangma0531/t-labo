@@ -1,34 +1,34 @@
-<div class="form-box">
-  <h4>投稿編集</h4>
+<div class="form-box p-3">
+  <h2>投稿編集</h2>
   <%= form_with(model: @source, id: "source_form", local: true) do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label 'タイトル' %><br />
-      <%= f.text_field :title, placeholder: 'タイトル' %>
+      <%= f.text_field :title, placeholder: 'タイトル', class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label '校種' %><br />
-      <%= f.collection_select :grade_id, Grade.all, :id, :name, {include_blank: "校種を選択してください"} %>
+      <%= f.collection_select :grade_id, Grade.all, :id, :name, {include_blank: "校種を選択してください"}, class: 'form-select' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label '教科' %><br />
-      <%= f.collection_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"} %>
+      <%= f.collection_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"}, class: 'form-select' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label '科目' %><br />
-      <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"} %>
+      <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"}, class: 'form-select' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label '概要' %><br />
-      <%= f.text_area :content, cols: "50", rows: "5", placeholder: '概要' %>
+      <%= f.text_area :content, cols: "50", rows: "5", placeholder: '概要', class: 'form-control' %>
     </div>
 
-    <div class="field image-field">
+    <div class="field mb-3 image-field">
       <%= f.label '画像' %><br />
       <div id="previews">
         <% if @source.image.attached? %>
@@ -39,14 +39,14 @@
         <% end %>
       </div>
       <div class="click-upload" id="click-upload">
-        <%= f.file_field :image, class: "btn img-btn" %>
+        <%= f.file_field :image, class: "form-control" %>
         <%# 以下、複数枚画像対応コード %>
         <%# <%= f.file_field :images, name: 'source[images][]', data: {index: 0}, class: "btn img-btn" %>
       </div>
     </div>
 
-    <div class="actions">
-      <%= f.submit "更 新", class: "btn" %>
+    <div class="actions mb-3">
+      <%= f.submit "更 新", class: "btn btn-warning shadow" %>
     </div>
   <% end %>
   <hr>

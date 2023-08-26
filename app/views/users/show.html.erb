@@ -7,26 +7,30 @@
     <% end 
   </div> %>
 
-  <h3><%= @user.name %></h3>
+  <h2 style="font-weight: bold"><%= @user.name %></h2>
   <div class="user-btns">
     <% if user_signed_in? %>
       <% if current_user == @user %>
-        <%= link_to edit_user_registration_path, class: 'btn mypage-btn' do %>
-          ユーザー情報編集
+        <%= link_to edit_user_registration_path, class: 'btn btn-warning shadow' do %>
+          <i class="bi bi-person-fill-gear"></i> 登録情報編集
         <% end %>
-        <%= link_to destroy_user_session_path, class: 'btn logout', method: :delete do %>
-          ログアウト
+        <%= link_to destroy_user_session_path, class: 'btn btn-secondary shadow', method: :delete do %>
+          <i class="bi bi-box-arrow-right"></i> ログアウト
         <% end %>
       <% elsif current_user != @user %>
         <%= render partial: 'relationships/follow_buttons', locals: {user: @user} %>
         <% if @isRoom %>
-          <%= link_to 'チャットへ', room_path(@roomId), class: 'btn mypage-btn' %>
+          <%= link_to room_path(@roomId), class: 'btn mypage-btn btn-warning shadow' do %>
+            <i class="bi bi-chat-dots-fill"></i> チャットへ
+          <% end %>
         <% else %>
           <%= form_for @room do |f| %>
             <%= fields_for @entry do |e| %>
               <%= e.hidden_field :user_id, value: @user.id %>
             <% end %>
-            <%= f.submit 'チャットを始める', class: 'btn' %>
+            <%= button_tag( class: "btn btn-warning shadow") do %>
+              <%= content_tag :span, " チャットを始める", class: "bi bi-chat-dots-fill" %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>

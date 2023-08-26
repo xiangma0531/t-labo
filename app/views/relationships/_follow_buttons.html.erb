@@ -1,12 +1,12 @@
 <% if current_user != user %>
   <div id="follow-button-<%= user.id %>">
     <% if user_signed_in? && current_user.following?(user) %>
-      <%= link_to relationship_path(user.id), class: 'btn unfollow', method: :delete, remote: true do %>
-        フォロー解除
+      <%= link_to relationship_path(user.id), class: 'btn unfollow btn-secondary shadow', method: :delete, remote: true do %>
+        <i class="bi bi-person-dash"></i> フォロー解除
       <% end %>
     <% else %>
-      <%= link_to relationships_path(id: user.id), class: 'btn follow', method: :post, remote: true do %>
-        フォローする
+      <%= link_to relationships_path(id: user.id), class: 'btn follow btn-warning shadow', method: :post, remote: true do %>
+        <i class="bi bi-person-fill-add"></i> フォローする
       <% end %>
     <% end %>
   </div>

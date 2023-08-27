@@ -419,8 +419,68 @@ DM
   padding: 1%;
   width: 100%;
 }
+.messages>li{
+  display: flex;
+}
 
-.mine-message{
+.messages>li + li{
+  margin-top: 32px;
+}
+
+li.right-side{
+  flex-direction: row-reverse;
+}
+
+.pic{
+  /* background: pink; */
+  width: 80px;
+  text-align: center;
+}
+
+.pic img{
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.message {
+  border-radius: 8px;
+  padding: 16px 24px;
+  min-width: 60%;
+  line-height: 1.8;
+  position: relative;
+}
+
+.right-side > .message{
+  background-color: rgba(var(--bs-warning-rgb),var(--bs-bg-opacity))!important;
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity))!important;
+}
+
+.message::before{
+  content: '';
+  width: 0;
+  height: 0;
+  /* border: 8px solid #fff; */
+  border: 8px solid transparent;
+  position: absolute;
+}
+
+.left-side .message::before{
+  top: 12px;
+  left: -16px;
+  border-right-color: #333;
+}
+
+.right-side .message::before{
+  top: 12px;
+  right: -16px;
+  border-left-color: rgba(var(--bs-warning-rgb),var(--bs-bg-opacity))!important;
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-warning-rgb),var(--bs-bg-opacity))!important;
+  --bs-text-opacity: 1;
+}
+/* .mine-message{
   margin: 10px 0 10px auto;
   max-width: 60%;
 }
@@ -494,7 +554,7 @@ DM
 .says p{
   margin: 0;
   padding: 0;
-}
+} */
 
 .dm-field{
   display: flex;

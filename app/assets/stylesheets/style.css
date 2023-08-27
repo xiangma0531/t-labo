@@ -562,6 +562,27 @@ DM
   border: solid 1px #666;
 }
 
+/* タブの色変更 */
+.nav-tabs .nav-link.active{
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-warning-rgb),var(--bs-bg-opacity))!important;
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity))!important;
+}
+
+/* タブの文字色変更 */
+.nav-tabs .nav-link{
+  color: lightgray;
+}
+
+.mypage-tab-content{
+  border-right: 1px solid lightgray;
+  border-left:  1px solid lightgray;
+  border-bottom:  1px solid lightgray;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
 /* tabがactiveのとき */
 .tab-active{
   color: #333;

@@ -1,9 +1,11 @@
-<%= render partial: "search_form", locals: {search: @p} %>
-<h2>検索結果</h2>
-<% if @results.length != 0 %>
-  <% @results.each do |result| %>
-    <%= render partial: "source", locals: {source: result} %>
+<%# <%= render partial: "search_form", locals: {search: @p} %>
+<div class="p-3">
+  <h2>検索結果</h2>
+  <% if @results.length != 0 %>
+    <% @results.each do |result| %>
+      <%= render partial: "source", locals: {source: result} %>
+    <% end %>
+  <% else %>
+    該当する記事が見つかりませんでした
   <% end %>
-<% else %>
-  該当する記事が見つかりませんでした
-<% end %>
+</div>

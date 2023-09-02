@@ -5,100 +5,72 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header class="header">
-      <label class="header-left">
-        <%= link_to 'T-Labo', root_path, class: "logo" %>
-      </label>
-      <ul class="header-right">
-        <% if user_signed_in? %>
-          <%# <li class="footer-button">
-            <%= link_to root_path do 
-              <%= image_tag "home.png", class: "footer-icon"<br>
-              <span class="footer-icon-caption">ホーム</span>
-            <% end 
-          </li> %>
-          <li class="footer-button">
-            <%= link_to new_source_path do %>
-              <%= image_tag "post.png", class: "footer-icon"%><br>
-              <span class="footer-icon-caption">新規投稿</span>
-            <% end %>
-          </li>
-          <li class="footer-button">
-            <%= link_to rooms_path do %>
-              <%= image_tag "message.png", class: "footer-icon"%><br>
-              <span class="footer-icon-caption">DM</span>
-            <% end %>
-          </li>
-          <li class="footer-button">
-            <%= link_to likes_path do %>
-              <%= image_tag "star.png", class: "footer-icon"%><br>
-              <span class="footer-icon-caption">いいね</span>
-            <% end %>
-          </li>
-          <li class="footer-button">
-            <%= link_to user_path(current_user.id) do %>
-              <% if current_user.image.attached? %>
-                <%= image_tag "default_avator.png", class: "footer-avator" %>
-                <%# <%= image_tag current_user.image.variant(resize: '20x20') %>
+
+<header>
+      <nav class="navbar navbar-expand-md navbar-warning bg-warning">
+        <div class="container col-md-9">
+          <%= link_to 'T-Labo', root_path, class: 'navbar-brand logo' %>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to new_source_path, class: "nav-link" do %>
+                    <i class="bi bi-pencil-square"></i>新規投稿
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to rooms_path, class: "nav-link" do %>
+                    <i class="bi bi-chat-dots-fill"></i>チャット
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to likes_path, class: "nav-link" do %>
+                    <i class="bi bi-star-fill"></i>いいね
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to user_path(current_user.id), class: 'nav-link' do %>
+                    <% if current_user.image.attached? %>
+                      <i class="bi bi-person"></i>マイページ
+                      <%# <%= image_tag current_user.image.variant(resize: '20x20') %>
+                    <% else %>
+                      <i class="bi bi-person"></i>マイページ
+                    <% end %>
+                  <% end %>
+                </li>
               <% else %>
-                <%= image_tag "default_avator.png", class: "footer-avator" %>
+                <li class="nav-item">
+                  <%= link_to new_user_registration_path, class: "nav-link" do %>
+                    <i class="bi bi-person-plus"></i>新規登録
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_session_path, class: "nav-link" do %>
+                    <i class="bi bi-door-open"></i>ログイン
+                  <% end %>
+                </li>
               <% end %>
-              <br>
-              <span class="footer-icon-caption">マイページ</span>
-            <% end %>
-          </li>
-        <% else %>
-          <li class="footer-button">
-            <%= link_to new_user_session_path do %>
-              <%= image_tag "login.png", class: "footer-icon" %>
-              <br>
-              <span class="footer-icon-caption">ログイン</span>
-            <% end %>
-          </li>
-          <li class="footer-button">
-            <%= link_to new_user_registration_path do %>
-              <%= image_tag "registration.png", class: "footer-icon" %>
-              <br>
-              <span class="footer-icon-caption">新規登録</span>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-      <%# <ul class="header-right">
-        <% if admin_signed_in? 
-          <li class="header-list">
-            管理者：<%= current_admin.name 
-          </li>
-          <li class="header-list">
-            <%= link_to '新規投稿', new_source_path 
-          </li>
-          <li class="header-list">
-            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete 
-          </li>
-        <% elsif user_signed_in? 
-          <li class="header-list">
-            <%= link_to new_source_path, class: "btn header-btn" do 
-              新規投稿
-            <% end 
-          </li>
-        <% else 
-          <li class="header-list">
-            <%= link_to new_user_registration_path, class: "btn header-btn" do 
-              新規登録
-            <% end 
-          </li>
-        <% end 
-      </ul> %>
+              <li class="nav-item" data-bs-toggle="modal" data-bs-target="#searchModal" style="cursor: pointer">
+                <i class="bi bi-search"></i>記事を検索する
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <div class="main">
-      <div class="grid">
+      <div class="container col-md-8 grid">
         <%= yield %>
       </div>
     </div>
@@ -145,6 +117,22 @@
         </li>
       </ul>
     </footer> %>
+
+    <%# 記事検索モーダルウィンドウ %>
+      <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="searchModalLabel">記事を検索</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= render partial: "sources/search_form", locals: { search: @p} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%# 記事検索モーダルウィンドウ %>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </body>
 </html>

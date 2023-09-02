@@ -32,10 +32,18 @@ p{
   list-style: none;
   color: inherit;
 }
+a{
+  text-decoration: none !important;
+  color: #333 !important;
+}
 h1,h2,h3,h4,h5,h6{
   padding: 0;
   margin-block-start: 0;
   margin-block-end: 0;
+}
+.date-time{
+  color: lightgray;
+  font-size: smaller;
 }
 /* 入力系 */
 .form-box{
@@ -406,13 +414,79 @@ DM
 
 .messages{
   height: 55vh;
-  overflow: scroll;
+  overflow-y: scroll;
   background-color: white;
   padding: 1%;
   width: 100%;
 }
+.messages > li{
+  display: flex;
+}
 
-.mine-message{
+.messages > li + li{
+  margin-top: 32px;
+}
+
+li.right-side{
+  flex-direction: row-reverse;
+}
+
+.pic{
+  /* background: pink; */
+  width: 80px;
+  text-align: center;
+}
+
+.pic img{
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.message {
+  border-radius: 8px;
+  padding: 16px 24px;
+  min-width: 60%;
+  line-height: 1.8;
+  position: relative;
+}
+
+.right-side > .message{
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-warning-rgb), var(--bs-bg-opacity)) !important;
+  color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity))!important;
+}
+
+.left-side > .message{
+  --bs-bg-opacity: 1;
+  background-color: lightgray;
+  color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity))!important;
+}
+
+.message::before{
+  content: '';
+  width: 0;
+  height: 0;
+  /* border: 8px solid #fff; */
+  border: 8px solid transparent;
+  position: absolute;
+}
+
+.left-side .message::before{
+  top: 12px;
+  left: -16px;
+  border-right-color: lightgray;
+}
+
+.right-side .message::before{
+  top: 12px;
+  right: -16px;
+  border-left-color: rgba(var(--bs-warning-rgb),var(--bs-bg-opacity))!important;
+  --bs-bg-opacity: 1;
+  /* background-color: rgba(var(--bs-warning-rgb),var(--bs-bg-opacity))!important;
+  --bs-text-opacity: 1; */
+}
+/* .mine-message{
   margin: 10px 0 10px auto;
   max-width: 60%;
 }
@@ -486,7 +560,7 @@ DM
 .says p{
   margin: 0;
   padding: 0;
-}
+} */
 
 .dm-field{
   display: flex;
@@ -552,6 +626,27 @@ DM
   color: #333;
   cursor: pointer;
   border: solid 1px #666;
+}
+
+/* タブの色変更 */
+.nav-tabs .nav-link.active{
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-warning-rgb),var(--bs-bg-opacity))!important;
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity))!important;
+}
+
+/* タブの文字色変更 */
+.nav-tabs .nav-link{
+  color: lightgray;
+}
+
+.mypage-tab-content{
+  border-right: 1px solid lightgray;
+  border-left:  1px solid lightgray;
+  border-bottom:  1px solid lightgray;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 /* tabがactiveのとき */

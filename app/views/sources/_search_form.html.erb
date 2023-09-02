@@ -1,28 +1,26 @@
-<div class="search">
-  <%= search_form_for search, url: search_sources_path, class: "form-box" do |f| %>
-    <h4>記事を検索</h4>
-    <div class="field">
-      <%= f.label :content_cont, 'キーワード', class: "label" %><br />
-      <%= f.search_field :content_cont, placeholder: "キーワードを入力してください", class: "input-text" %>
-    </div>
+<%= search_form_for search, url: search_sources_path, class: "p-3" do |f| %>
 
-    <div class="field">
-      <%= f.label :grade_id_eq, '校種', class: "label" %><br />
-      <%= f.collection_select :grade_id_eq, Grade.all, :id, :name, include_blank: "指定なし", class: "input-select" %>
-    </div>
+  <div class="field mb-3">
+    <%= f.label :content_cont, 'キーワード', class: "label" %><br />
+    <%= f.search_field :content_cont, placeholder: "キーワードを入力してください", class: "form-control" %>
+  </div>
 
-    <div class="field">
-      <%= f.label :subject_id_eq, '教科', class: "label" %><br />
-      <%= f.collection_select :subject_id_eq, Subject.all, :id, :name, include_blank: "指定なし", class: "input-select" %>
-    </div>
+  <div class="field mb-3">
+    <%= f.label :grade_id_eq, '校種', class: "label" %><br />
+    <%= f.collection_select :grade_id_eq, Grade.all, :id, :name, {include_blank: "校種を選択してください"}, class: "form-select" %>
+  </div>
 
-    <div class="field">
-      <%= f.label :course_id_eq, '科目', class: "label" %><br />
-      <%= f.collection_select :course_id_eq, Course.all, :id, :name, include_blank: "指定なし", class: "input-select" %>
-    </div>
+  <div class="field mb-3">
+    <%= f.label :subject_id_eq, '教科', class: "label" %><br />
+    <%= f.collection_select :subject_id_eq, Subject.all, :id, :name, {include_blank: "教科を選択してください"}, class: "form-select" %>
+  </div>
 
-    <div class="actions">
-      <%= f.submit '検 索', class: "btn search-btn" %>
-    </div>
-  <% end %>
-</div>
+  <div class="field mb-3">
+    <%= f.label :course_id_eq, '科目', class: "label" %><br />
+    <%= f.collection_select :course_id_eq, Course.all, :id, :name, {include_blank: "科目を選択してください"}, class: "form-select" %>
+  </div>
+
+  <div class="actions mb-3">
+    <%= f.submit '検 索', class: "btn btn-warning shadow" %>
+  </div>
+<% end %>

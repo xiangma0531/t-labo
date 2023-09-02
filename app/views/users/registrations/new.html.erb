@@ -1,59 +1,59 @@
-<div class="form-box">
-  <h4>新規登録</h4>
+<div class="form-box p-3">
+  <h2>新規登録</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "users/shared/error_messages", resource: resource %>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名(ニックネーム可)" %>
+      <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名(ニックネーム可)", class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :grade_id %><br />
-      <%= f.collection_select :grade_id, Grade.all, :id, :name, {include_blank: "校種を選択してください"} %>
+      <%= f.collection_select :grade_id, Grade.all, :id, :name, {include_blank: "校種を選択してください"}, class: 'form-select' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :subject_id %><br />
-      <%= f.collection_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"} %>
+      <%= f.collection_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"}, class: 'form-select' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :course_id %><br />
-      <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"} %>
+      <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"}, class: 'form-select' %>
     </div>
 
-    <%# <div class="field">
+    <%# <div class="field mb-3">
       <%= f.label :image <em>アバター画像を設定できます</em><br />
       <%= f.file_field :image 
     </div> %>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :introduction %><br />
-      <%= f.text_area :introduction, cols: "50", rows: "5", placeholder: "自己紹介文を入力してください" %>
+      <%= f.text_area :introduction, cols: "50", rows: "5", placeholder: "自己紹介文を入力してください", class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :password %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(最低 <%= @minimum_password_length %> 文字)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "新規登録", class: "btn" %>
+    <div class="actions mb-3">
+      <%= f.submit "新規登録", class: "btn btn-warning shadow" %>
     </div>
   <% end %>
 

@@ -7,26 +7,30 @@
     <% end 
   </div> %>
 
-  <h3><%= @user.name %></h3>
+  <h2 style="font-weight: bold"><%= @user.name %></h2>
   <div class="user-btns">
     <% if user_signed_in? %>
       <% if current_user == @user %>
-        <%= link_to edit_user_registration_path, class: 'btn mypage-btn' do %>
-          ユーザー情報編集
+        <%= link_to edit_user_registration_path, class: 'btn btn-warning shadow d-block mb-2' do %>
+          <i class="bi bi-person-fill-gear"></i> 登録情報編集
         <% end %>
-        <%= link_to destroy_user_session_path, class: 'btn logout', method: :delete do %>
-          ログアウト
+        <%= link_to destroy_user_session_path, class: 'btn btn-secondary shadow d-block', method: :delete do %>
+          <i class="bi bi-box-arrow-right"></i> ログアウト
         <% end %>
       <% elsif current_user != @user %>
         <%= render partial: 'relationships/follow_buttons', locals: {user: @user} %>
         <% if @isRoom %>
-          <%= link_to 'チャットへ', room_path(@roomId), class: 'btn mypage-btn' %>
+          <%= link_to room_path(@roomId), class: 'btn mypage-btn btn-warning shadow' do %>
+            <i class="bi bi-chat-dots-fill"></i> チャットへ
+          <% end %>
         <% else %>
           <%= form_for @room do |f| %>
             <%= fields_for @entry do |e| %>
               <%= e.hidden_field :user_id, value: @user.id %>
             <% end %>
-            <%= f.submit 'チャットを始める', class: 'btn' %>
+            <%= button_tag( class: "btn btn-warning shadow") do %>
+              <%= content_tag :span, " チャットを始める", class: "bi bi-chat-dots-fill" %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
@@ -43,7 +47,39 @@
   <hr>
 
   <div class="mylists">
-    <ul class="tab-list list-unstyled">
+
+  <ul class="nav nav-tabs nav-fill" id="mypageTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+        自分の投稿
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+        フォロー
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+        フォロワー
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content p-2 mypage-tab-content" id="mypageTabContent">
+    <div class="tab-pane show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+      <% @sources.each do |source| %>
+        <%= render partial: "sources/source", locals: { source: source } %>
+      <% end %>
+    </div>
+    <div class="tab-pane" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+      <%= render partial: "list", locals: { lists: @followings } %>
+    </div>
+    <div class="tab-pane" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+      <%= render partial: "list", locals: { lists: @followers } %>
+    </div>
+  </div>
+
+    <%# <ul class="tab-list list-unstyled">
       <li class="tab tab-active">
         自分の投稿
       </li>
@@ -53,23 +89,23 @@
       <li class="tab">
         フォロワー
       </li>
-    </ul>
+    </ul> %>
 
-    <div class="tabbox-contents">
+    <%# <div class="tabbox-contents">
       <div class="tabbox box-show">
-        <%# 自分の投稿 %>
-        <% @sources.each do |source| %>
-          <%= render partial: "sources/source", locals: { source: source } %>
-        <% end %>
+        <%# 自分の投稿
+        <% @sources.each do |source|
+          <%= render partial: "sources/source", locals: { source: source }
+        <% end
       </div>
       <div class="tabbox">
-        <%# フォロー %>
-        <%= render partial: "list", locals: { lists: @followings } %>
+        <%# フォロー
+        <%= render partial: "list", locals: { lists: @followings }
       </div>
       <div class="tabbox">
-        <%# フォロワー %>
-        <%= render partial: "list", locals: { lists: @followers } %>
+        <%# フォロワー
+        <%= render partial: "list", locals: { lists: @followers }
       </div>
-    </div>
+    </div> %>
   </div>
 </div>

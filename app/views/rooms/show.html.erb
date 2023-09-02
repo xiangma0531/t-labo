@@ -1,48 +1,64 @@
 <% @entries.where.not(user_id: current_user.id).each do |entry| %>
-  <h1><%= entry.user.name %>さんとのDM</h1>
+  <h2><%= entry.user.name %>さんとのチャット</h2>
 <% end %>
 
 <div class="message-main">
-  <div class="messages">
-    <% if @messages.present? %>
+  <% if @messages.present? %>
+    <ul class="messages p-3">
       <% @messages.each do |message| %>
         <% if message.user_id == current_user.id %>
-          <div class="mine-message">
-            <p>
+          <li class="right-side">
+            <div class="message">
               <%= safe_join(message.message.split("\n"),tag(:br)) %>
-            </p>
-          </div>
+            </div>
+          </li>
         <% else %>
-          <div class="others-message">
+          <li class="left-side">
             <%# <div class="face-icon-dm">
               <%# アイコン
             </div> %>
             <div class="message">
+              <%= safe_join(message.message.split("\n"),tag(:br)) %>
+            </div>
+          </li> 
+        <% end %>
+      <% end %>
+    </ul>
+      <%# <% @messages.each do |message| 
+        <% if message.user_id == current_user.id 
+          <div class="mine-message">
+            <p>
+              <%= safe_join(message.message.split("\n"),tag(:br)) 
+            </p>
+          </div>
+        <% else 
+          <div class="others-message">
+            <%# <div class="face-icon-dm">
+              <%# アイコン
+            </div> 
+            <div class="message">
               <div class="says">
                 <p>
-                  <%= safe_join(message.message.split("\n"),tag(:br)) %>
+                  <%= safe_join(message.message.split("\n"),tag(:br)) 
                 </p>
               </div>
             </div>
           </div>
-        <% end %>
+        <% end 
       <% end %>
-    <% else %>
-      <h3>メッセージはまだありません</h3>
-    <% end %>
-  </div>
+  <% else  %>
+    <h3>メッセージはまだありません</h3>
+  <% end %>
 </div>
 
 <hr>
 
 <%= form_for @message do |f| %>
-  <div class="dm-field">
     <div class="field">
-      <%= f.text_area :message, placeholder: 'メッセージを入力してください', rows: '2', class: "room-field" %>
+      <%= f.text_area :message, placeholder: 'メッセージを入力してください', rows: '1', class: "form-control" %>
     </div>
     <%= f.hidden_field :room_id, value: @room.id %>
     <div class="actions">
-      <%= f.submit '送 信', class: 'room-actions btn' %>
+      <%= f.submit '送 信', class: 'btn btn-warning shadow chat-btn' %>
     </div>
-  </div>
 <% end %>

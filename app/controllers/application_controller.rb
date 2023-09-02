@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters_user, if: :devise_controller?
   before_action :configure_permitted_parameters_admin_edit, if: :devise_controller?
   before_action :configure_permitted_parameters_user_edit, if: :devise_controller?
+  before_action :set_search
 
   private
   def configure_permitted_parameters_admin
@@ -28,5 +29,9 @@ class ApplicationController < ActionController::Base
     when User
       root_path
     end
+  end
+
+  def set_search
+    @p = Source.ransack(params[:q])
   end
 end

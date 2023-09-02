@@ -4,7 +4,7 @@
 
 <div class="message-main">
   <% if @messages.present? %>
-    <ul class="messages p-1">
+    <ul class="messages p-3">
       <% @messages.each do |message| %>
         <% if message.user_id == current_user.id %>
           <li class="right-side">

@@ -14,6 +14,9 @@ import "bootstrap";
 import "../stylesheets/application.scss";
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
+// jQuery
+require("jquery")
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

@@ -17,12 +17,12 @@
 
     <div class="field mb-3">
       <%= f.label :subject_id %><br />
-      <%= f.collection_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"}, class: 'form-select' %>
+      <%= f.collection_select :subject_id, Subject.all, :id, :name, {}, class: 'form-select' %>
     </div>
 
     <div class="field mb-3">
       <%= f.label :course_id %><br />
-      <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"}, class: 'form-select' %>
+      <%= f.collection_select :course_id, Course.where(subject_id: current_user.subject_id), :id, :name, {}, class: 'form-select' %>
     </div>
 
     <%# <div class="field">
@@ -101,3 +101,14 @@
     </div>
   </div>
 <%# 削除確認モーダルウィンドウ %>
+
+<script>
+  $(function() {
+    $('#user_subject_id').change(function() {
+      $.ajax({
+        url: "<%= course_user_course_path %>",
+        data: { subject_id: $('#user_subject_id').has('option:selected').val() }
+      });
+    });
+  });
+</script>

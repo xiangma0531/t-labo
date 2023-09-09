@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'course/user_course'
+  get 'course/source_course'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     passwords: 'users/passwords',

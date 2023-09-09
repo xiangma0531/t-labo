@@ -7,8 +7,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :grade
-  belongs_to :subject
-  belongs_to :course
+  belongs_to_active_hash :subject
+  belongs_to_active_hash :course
   has_many :sources, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy

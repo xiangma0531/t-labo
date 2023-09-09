@@ -15,7 +15,7 @@
 
 <header>
       <nav class="navbar navbar-expand-md navbar-warning bg-warning">
-        <div class="container col-md-9">
+        <div class="container col-md-10">
           <%= link_to 'T-Labo', root_path, class: 'navbar-brand logo' %>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -61,7 +61,9 @@
                 </li>
               <% end %>
               <li class="nav-item" data-bs-toggle="modal" data-bs-target="#searchModal" style="cursor: pointer">
-                <i class="bi bi-search"></i>記事を検索する
+                <span class="nav-link">
+                  <i class="bi bi-search"></i>記事を検索する
+                </span>
               </li>
             </ul>
           </div>
@@ -70,7 +72,7 @@
     </header>
 
     <div class="main">
-      <div class="container col-md-8 grid">
+      <div class="container col-md-10 grid">
         <%= yield %>
       </div>
     </div>

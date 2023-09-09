@@ -15,12 +15,12 @@
 
     <div class="field mb-3">
       <%= f.label '教科' %><br />
-      <%= f.collection_select :subject_id, Subject.all, :id, :name, {include_blank: "教科を選択してください"}, class: 'form-select' %>
+      <%= f.collection_select :subject_id, Subject.all, :id, :name, {}, class: 'form-select' %>
     </div>
 
     <div class="field mb-3">
       <%= f.label '科目' %><br />
-      <%= f.collection_select :course_id, Course.all, :id, :name, {include_blank: "科目を選択してください"}, class: 'form-select' %>
+      <%= f.collection_select :course_id, Course.where(subject_id: @source.subject_id), :id, :name, {}, class: 'form-select' %>
     </div>
 
     <div class="field mb-3">
@@ -52,3 +52,14 @@
   <hr>
   <%= link_to '戻る', :back %>
 </div>
+
+<script>
+  $(function() {
+    $('#source_subject_id').change(function() {
+      $.ajax({
+        url: "<%= course_source_course_path %>",
+        data: { subject_id: $('#source_subject_id').has('option:selected').val() }
+      });
+    });
+  });
+</script>

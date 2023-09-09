@@ -1,11 +1,15 @@
 class CourseController < ApplicationController
+  before_action :set_courses
   
   def user_course
-    @courses = Course.where(subject_id: params[:subject_id].to_i)
   end
 
   def source_course
-    @courses = Course.where(subject_id: params[:subject_id].to_i)
+  end
+
+  private
+  def set_courses
+    @courses = Course.where(subject_id: [params[:subject_id].to_i, 0])
   end
 
 end

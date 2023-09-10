@@ -1,16 +1,16 @@
-<div class="form-box">
+<div class="form-box p-3">
   <h4>パスワード再設定メール送信</h4>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= render "users/shared/error_messages", resource: resource %>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "再設定メールを送信する", class: "btn" %>
+    <div class="actions mb-3">
+      <%= f.submit "再設定メールを送信する", class: "btn btn-warning shadow" %>
     </div>
   <% end %>
 

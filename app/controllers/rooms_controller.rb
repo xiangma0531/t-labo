@@ -16,6 +16,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
       @messages = @room.messages.order(created_at: 'DESC')
+      @messages.where(already: false).where.not(user_id: current_user.id).update_all(already: true)
       @message = Message.new
       @entries = @room.entries
     else

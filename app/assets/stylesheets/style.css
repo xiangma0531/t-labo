@@ -407,6 +407,19 @@ DM
   position: relative;
 }
 
+.yet{
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.yet-header{
+  background: white;
+  color: rgba(var(--bs-warning-rgb),var(--bs-bg-opacity))!important;
+}
+
 .message-main{
   border-radius: 10px;
   overflow: hidden; 

@@ -32,7 +32,9 @@
                   <%= link_to rooms_path, class: "nav-link" do %>
                     <i class="bi bi-chat-dots-fill"></i>チャット
                     <% if @yet_messages > 0 && @yet_messages != nil %>
-                      <i class="bi bi-info-circle-fill"></i>
+                      <div class="yet yet-header">
+                        <%= @yet_messages %>
+                      </div>
                     <% end %>
                   <% end %>
                 </li>

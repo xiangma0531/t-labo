@@ -5,8 +5,13 @@
     <% @rooms.each do |room| %>
       <div class="room p-2">
         <%= link_to "#{room.user.name}さんとのチャット", room_path(room.room_id) %>
-        <p>未読<%= room.room.yet_messages(current_user) %>件</p>
-        <p><%= link_to  "ルーム削除", room_path(room.room_id), method: :delete %></p>
+        <% if room.room.yet_messages(current_user)>0 %>
+          <div class="bg-warning yet">
+            <%= room.room.yet_messages(current_user) %>
+          </div>
+        <% end %>
+        <br>
+        <%= link_to  "ルーム削除", room_path(room.room_id), method: :delete %>
       </div>
     <% end %>
   </div>

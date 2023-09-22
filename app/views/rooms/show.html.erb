@@ -8,8 +8,18 @@
       <% @messages.each do |message| %>
         <% if message.user_id == current_user.id %>
           <li class="right-side">
-            <div class="message">
-              <%= safe_join(message.message.split("\n"),tag(:br)) %>
+            <div class="message-wrapper">
+              <div class="message">
+                <%= safe_join(message.message.split("\n"),tag(:br)) %>
+              </div>
+              <div class="message-footer">
+                <% if message.already %>
+                  既読
+                <% end %>
+                <%= link_to message_path(message.id), method: :delete do %>
+                  <i class="bi bi-trash"></i>
+                <% end %>
+              </div>
             </div>
           </li>
         <% else %>
@@ -62,3 +72,5 @@
       <%= f.submit '送 信', class: 'btn btn-warning shadow chat-btn' %>
     </div>
 <% end %>
+
+<%= link_to "戻 る", rooms_path %>

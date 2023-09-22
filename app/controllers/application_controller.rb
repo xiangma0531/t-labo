@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters_admin_edit, if: :devise_controller?
   before_action :configure_permitted_parameters_user_edit, if: :devise_controller?
   before_action :set_search
+  before_action :message_check, if: :user_signed_in?
 
   private
   def configure_permitted_parameters_admin
@@ -33,5 +34,12 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @p = Source.ransack(params[:q])
+  end
+
+  def message_check
+    @yet_messages = 0
+    current_user.entries.each do |room|
+      @yet_messages += room.room.yet_messages(current_user)
+    end
   end
 end

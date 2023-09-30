@@ -140,6 +140,18 @@
         </div>
       </div>
     <%# 記事検索モーダルウィンドウ %>
+
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <script>
+      $(function() {
+        $('#q_subject_id_eq').change(function() {
+          $.ajax({
+            url: "<%= course_search_course_path %>",
+            data: { subject_id: $('#q_subject_id_eq').has('option:selected').val() }
+          });
+        });
+      });
+    </script>
   </body>
 </html>

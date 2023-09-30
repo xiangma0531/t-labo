@@ -12,12 +12,12 @@
 
   <div class="field mb-3">
     <%= f.label :subject_id_eq, '教科', class: "label" %><br />
-    <%= f.collection_select :subject_id_eq, Subject.all, :id, :name, {include_blank: "教科を選択してください"}, class: "form-select" %>
+    <%= f.collection_select :subject_id_eq, Subject.all, :id, :name, {}, class: "form-select" %>
   </div>
 
   <div class="field mb-3">
     <%= f.label :course_id_eq, '科目', class: "label" %><br />
-    <%= f.collection_select :course_id_eq, Course.all, :id, :name, {include_blank: "科目を選択してください"}, class: "form-select" %>
+    <%= f.collection_select :course_id_eq, Course.where(subject_id: 0), :id, :name, {}, class: "form-select" %>
   </div>
 
   <div class="actions mb-3">

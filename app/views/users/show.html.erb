@@ -20,7 +20,7 @@
       <% elsif current_user != @user %>
         <%= render partial: 'relationships/follow_buttons', locals: {user: @user} %>
         <% if @isRoom %>
-          <%= link_to room_path(@roomId), class: 'btn mypage-btn btn-warning shadow' do %>
+          <%= link_to room_path(@roomId), class: 'btn mypage-btn btn-warning shadow d-block' do %>
             <i class="bi bi-chat-dots-fill"></i> チャットへ
           <% end %>
         <% else %>
@@ -28,7 +28,7 @@
             <%= fields_for @entry do |e| %>
               <%= e.hidden_field :user_id, value: @user.id %>
             <% end %>
-            <%= button_tag( class: "btn btn-warning shadow") do %>
+            <%= button_tag( class: "btn btn-warning shadow d-block") do %>
               <%= content_tag :span, " チャットを始める", class: "bi bi-chat-dots-fill" %>
             <% end %>
           <% end %>

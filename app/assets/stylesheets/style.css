@@ -70,12 +70,12 @@ textarea{
 }
 .btn{
   width: fit-content;
-  font-weight: bold;
+  overflow: hidden;
+  /* font-weight: bold;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  overflow: hidden;
-  background-color: #f5deb3;
+  background-color: #f5deb3; */
 }
 
 /*
@@ -193,9 +193,9 @@ textarea{
 /*
 検索ボックス
 */
-.actions > .search-btn{
+/* .actions > .search-btn{
   background-color: #f5deb3;
-}
+} */
 
 /*
 記事(一覧)
@@ -231,7 +231,7 @@ textarea{
 /*
 新規投稿・編集
 */
-.btn.img-btn{
+/* .btn.img-btn{
   width: auto;
   padding: 1%;
   font-weight: bold;
@@ -240,7 +240,7 @@ textarea{
   border-radius: 5px;
   overflow: hidden;
   background-color: white;
-}
+} */
 
 /*
 詳細
@@ -257,7 +257,7 @@ textarea{
   margin: 1em 0;
   text-align: right;
 }
-.edit-btn{
+/* .edit-btn{
   border: 1px solid #666;
   padding: 1%;
   background-color: #f5deb3;
@@ -266,7 +266,7 @@ textarea{
   border: 1px solid #666;
   padding: 1%;
   background-color: #fff;
-}
+} */
 .source-caption{
   text-align: right;
 }
@@ -311,7 +311,7 @@ textarea{
   background-color: #fff;
 }
 
-.modal-btns{
+/* .modal-btns{
   width: 100%;
   margin-top: 5px;
   display: flex;
@@ -331,7 +331,7 @@ textarea{
 .modal-del-btn{
   border: 1px solid #666;
   display: block;
-}
+} */
 
 
 /*
@@ -614,12 +614,12 @@ li.right-side{
   overflow: hidden;
 }
 
-.mypage-btn, .follow{
+/* .mypage-btn, .follow{
   width: fit-content;
   display: block;
   padding: 5px;
   margin: 5px 0;
-}
+} */
 
 .unfollow, .logout{
   width: fit-content;

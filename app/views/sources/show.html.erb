@@ -54,10 +54,12 @@
 
   <div id="comments">
     <h4>コメント</h4>
+    <hr>
       <% @source.comments.each do |comment| %>
         <div class="comment">
           <%= comment.user.name %>：<%= safe_join(comment.text.split("\n"),tag(:br)) %>
         </div>
+        <hr>
       <% end %>
   </div>
 

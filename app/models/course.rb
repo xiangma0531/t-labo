@@ -1,6 +1,6 @@
 class Course < ActiveHash::Base
   self.data = [
-    { id: 0, subject_id: 0, name: '科目を選択してください'},
+    # { id: 0, subject_id: 0, name: '科目を選択してください'},
     { id: 1, subject_id: 1, name: '現代文'},
     { id: 2, subject_id: 1, name: '古文'},
     { id: 3, subject_id: 2, name: '数学ⅠA'},

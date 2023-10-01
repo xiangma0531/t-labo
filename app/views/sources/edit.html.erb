@@ -28,22 +28,22 @@
       <%= f.text_area :content, cols: "50", rows: "5", placeholder: '概要', class: 'form-control' %>
     </div>
 
-    <div class="field mb-3 image-field">
-      <%= f.label '画像' %><br />
+    <%# <div class="field mb-3 image-field">
+      <%= f.label '画像' <br />
       <div id="previews">
-        <% if @source.image.attached? %>
+        <% if @source.image.attached? 
           <div class="preview">
-            <%= image_tag @source.image, class: "preview-image" %>
-            <p><%= f.check_box :source_image_id, {class: "form-check-input", id: "source-image-check"}, @source.image.id, false %>画像を削除する</p>
+            <%= image_tag @source.image, class: "preview-image" 
+            <p><%= f.check_box :source_image_id, {class: "form-check-input", id: "source-image-check"}, @source.image.id, false 画像を削除する</p>
           </div>
-        <% end %>
+        <% end 
       </div>
       <div class="click-upload" id="click-upload">
-        <%= f.file_field :image, class: "form-control" %>
-        <%# 以下、複数枚画像対応コード %>
-        <%# <%= f.file_field :images, name: 'source[images][]', data: {index: 0}, class: "btn img-btn" %>
+        <%= f.file_field :image, class: "form-control" 
+        <%# 以下、複数枚画像対応コード 
+        <%# <%= f.file_field :images, name: 'source[images][]', data: {index: 0}, class: "btn img-btn" 
       </div>
-    </div>
+    </div> %>
 
     <div class="actions mb-3">
       <%= f.submit "更 新", class: "btn btn-warning shadow" %>

@@ -82,48 +82,11 @@
       </div>
     </div>
 
-    <%# <footer class="footer">
-      <ul class="footer-buttons">
-        <li class="footer-button">
-          <%= link_to root_path do 
-            <%= image_tag "home.png", class: "footer-icon"<br>
-            <span class="footer-icon-caption">ホーム</span>
-          <% end 
-        </li>
-        <li class="footer-button">
-          <%= link_to rooms_path do 
-            <%= image_tag "message.png", class: "footer-icon"<br>
-            <span class="footer-icon-caption">DM</span>
-          <% end 
-        </li>
-        <li class="footer-button">
-          <%= link_to likes_path do 
-            <%= image_tag "star.png", class: "footer-icon"<br>
-            <span class="footer-icon-caption">いいね</span>
-          <% end 
-        </li>
-        <li class="footer-button">
-          <% if user_signed_in? 
-            <%= link_to user_path(current_user.id) do 
-              <% if current_user.image.attached? 
-                <%= image_tag "default_avator.png", class: "footer-avator" 
-                <%# <%= image_tag current_user.image.variant(resize: '20x20') 
-              <% else 
-                <%= image_tag "default_avator.png", class: "footer-avator" 
-              <% end 
-              <br>
-              <span class="footer-icon-caption">マイページ</span>
-            <% end 
-          <% else 
-            <%= link_to new_user_session_path do 
-              <%= image_tag "login.png", class: "footer-icon" 
-              <br>
-              <span class="footer-icon-caption">ログイン</span>
-            <% end 
-          <% end 
-        </li>
-      </ul>
-    </footer> %>
+    <footer class="footer bg-warning p-1">
+      <div class="container col-md-10">
+        &COPY;Teachers-Labo
+      </div>
+    </footer>
 
     <%# 記事検索モーダルウィンドウ %>
       <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">

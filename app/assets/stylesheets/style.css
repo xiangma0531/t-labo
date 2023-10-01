@@ -125,8 +125,9 @@ textarea{
 .footer{
   position: absolute;
   width: 100vw;
-  height: 10vh;
-  background-color: #f5deb3;
+  height: 2em;
+  bottom: 0;
+  /* background-color: #f5deb3; */
 }
 .footer-buttons{
   display: flex;
@@ -180,7 +181,7 @@ textarea{
 メイン
 */
 .main{
-  height: 90vh;
+  height: 89vh;
   width: 100vw;
   overflow: scroll;
   background-color: #fafad2;

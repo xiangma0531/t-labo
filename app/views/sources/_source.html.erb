@@ -6,11 +6,11 @@
     <span class="source-bottom-el"><%= source.user.name %></span>
     <%# <span class="source-bottom-el"><%= l source.updated_at </span> %>
     <% if user_signed_in? %>
-      <% unless current_user.own?(source) %>
+      <%# <% unless current_user.own?(source) %>
         <span class="source-bottom-el" id="like-button-<%= source.id %>">
           <%= render partial: "likes/like", locals: {source: source} %>
         </span>
-      <% end %>
+      <%# <% end %>
     <% end %>
   </div>
 </div>

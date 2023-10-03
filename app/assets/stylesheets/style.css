@@ -408,6 +408,10 @@ DM
   position: relative;
 }
 
+.room-del{
+  color: #999 !important;
+}
+
 .yet{
   display: inline-block;
   width: 24px;

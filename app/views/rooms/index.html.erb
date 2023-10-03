@@ -11,7 +11,7 @@
           </div>
         <% end %>
         <br>
-        <%= link_to  "ルーム削除", room_path(room.room_id), method: :delete %>
+        <%= link_to  "ルーム削除", room_path(room.room_id), class: "room-del", method: :delete %>
       </div>
     <% end %>
   </div>

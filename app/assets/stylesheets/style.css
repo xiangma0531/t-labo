@@ -410,6 +410,7 @@ DM
 
 .room-del{
   color: #999 !important;
+  cursor: pointer;
 }
 
 .yet{

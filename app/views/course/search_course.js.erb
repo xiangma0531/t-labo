@@ -1,1 +1,2 @@
-$('#q_course_id_eq').html('<%= j(options_for_select(@q_courses.pluck(:name, :id))) %>');
+$('#q_course_id_eq').html('<%= j(select_tag :q_course_id_eq, options_for_select(@q_courses.pluck(:name, :id)), include_blank: '科目を選択してください') %>');
+<%# $('#q_course_id_eq').html('<%= j(options_for_select(@q_courses.pluck(:name, :id))) >'); %>

@@ -1,1 +1,2 @@
-$('#source_course_id').html('<%= j(options_for_select(@courses.pluck(:name, :id))) %>');
+$('#source_course_id').html('<%= j(select_tag :source_course_id, options_for_select(@courses.pluck(:name, :id)), include_blank: '科目を選択してください') %>');
+<%# $('#source_course_id').html('<%= j(options_for_select(@courses.pluck(:name, :id))) >'); %>

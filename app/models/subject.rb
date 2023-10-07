@@ -1,6 +1,6 @@
 class Subject < ActiveHash::Base
   self.data = [
-    { id: 0, name: '教科を選択してください'},
+    # { id: 0, name: '教科を選択してください'},
     { id: 1, name: '国語'},
     { id: 2, name: '算数・数学'},
     { id: 3, name: '理科'},

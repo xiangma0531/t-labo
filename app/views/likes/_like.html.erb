@@ -1,11 +1,13 @@
-<% if current_user.already_liked?(source) %>
-  <%= link_to source_likes_path(source_id: source.id, user_id: current_user.id), method: :delete, remote: true do %>
-    いいね 
-    <span class="like-button"><i class="bi bi-star-fill"></i></span>
-  <% end %>
-<% else %>
-  <%= link_to source_likes_path(source_id: source.id), method: :post, remote: true do %>
-    いいね 
-    <span class="like-button"><i class="bi bi-star"></i></span>
+いいね 
+<% unless current_user.own?(source) %>
+  <% if current_user.already_liked?(source) %>
+    <%= link_to source_likes_path(source_id: source.id, user_id: current_user.id), method: :delete, remote: true do %>
+      <span class="like-button"><i class="bi bi-star-fill"></i></span>
+    <% end %>
+  <% else %>
+    <%= link_to source_likes_path(source_id: source.id), method: :post, remote: true do %>
+      <span class="like-button"><i class="bi bi-star"></i></span>
+    <% end %>
   <% end %>
 <% end %>
+<%= source.likes.count %>

@@ -11,6 +11,11 @@
     </span>
   </div>
   <% if admin_signed_in? || user_signed_in? %>
+      <%# <% unless current_user.own?(@source) %>
+        <span class="source-bottom-el" id="like-button-<%= @source.id %>" style="text-align: right;">
+          <%= render partial: "likes/like", locals: {source: @source} %>
+        </span>
+      <%# <% end %>
     <% if current_user == @source.user %>
       <div class="edit-and-destroy-buttons">
         <%= link_to edit_source_path(@source.id), class: "btn btn-warning shadow" do %>
@@ -20,12 +25,7 @@
             <i class="bi bi-trash"></i> 削除
           </button>
       </div>
-    <% else %>
-      <% unless current_user.own?(@source) %>
-        <span class="source-bottom-el" id="like-button-<%= @source.id %>" style="text-align: right;">
-          <%= render partial: "likes/like", locals: {source: @source} %>
-        </span>
-      <% end %>
+    <%# <% else %>
     <% end %>
   <% end %>
 
@@ -54,10 +54,12 @@
 
   <div id="comments">
     <h4>コメント</h4>
+    <hr>
       <% @source.comments.each do |comment| %>
         <div class="comment">
           <%= comment.user.name %>：<%= safe_join(comment.text.split("\n"),tag(:br)) %>
         </div>
+        <hr>
       <% end %>
   </div>
 

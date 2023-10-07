@@ -7,6 +7,10 @@ class CourseController < ApplicationController
   def source_course
   end
 
+  def search_course
+    @q_courses = Course.where(subject_id: [params[:subject_id].to_i, 0])
+  end
+
   private
   def set_courses
     @courses = Course.where(subject_id: [params[:subject_id].to_i, 0])

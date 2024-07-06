@@ -10,6 +10,7 @@
     "bootstrap": "^5.3.1",
     "bootstrap-icons": "^1.10.5",
     "jquery": "^3.7.1",
+    "sass": "^1.77.6",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
